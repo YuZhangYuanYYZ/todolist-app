@@ -1,4 +1,4 @@
-let Data = (localStorage.getItem('todoList')) ? JSON.parse(localStorage.getItem('todoList')) : {
+export const Data = (localStorage.getItem('todoList')) ? JSON.parse(localStorage.getItem('todoList')) : {
     todo: [],
     completed: []
 };

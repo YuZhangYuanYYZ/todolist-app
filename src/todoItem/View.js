@@ -1,6 +1,6 @@
 import React from 'react';
 import './style.css'
-import Data from '../Data.js';
+import { Data } from '../Data.js';
 
 // class View extends Component {
 //     constructor(props) {

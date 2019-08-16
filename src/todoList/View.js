@@ -1,10 +1,10 @@
 import React from 'react';
 import './style.css'
-import Data from '../Data.js';
+import { Data } from '../Data.js';
 import TodoItem from '../todoItem';
 import CompleteItem from '../completeItem';
 
-class View extends React.Component {
+class View1 extends React.Component {
     constructor(props) {
         super(props);
         this.state = { data: { todo: [], completed: [] } };
@@ -20,7 +20,7 @@ class View extends React.Component {
 
     render() {
         return (
-            < div >
+            <div>
                 <header>
                     <input id="item" placeholder="Enter your todolist" onKeyDown={this.addItemByEnter}></input>
                     <button id="add">
@@ -38,11 +38,10 @@ class View extends React.Component {
                 <div className="toDoListContainer">
                     <TodoItem></TodoItem>
                     <CompleteItem></CompleteItem>
-
                 </div>
             </div >
         )
     }
 }
 
-export default View;
+export default View1;
