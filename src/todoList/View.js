@@ -5,13 +5,16 @@ import TodoAndCompleteItem from '../todoAndCompleteItem'
 class View1 extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { data: { todo: [], completed: [] } };
+        this.state = { data: Data };
         this.addItemByEnter = this.addItemByEnter.bind(this)
     }
     addItemByEnter(e) {
         let inputValue = e.target.value;
         if ((inputValue) && ((e.key === 'Enter') || (e.key === 'NumpadEnter'))) {
             Data.todo.push(inputValue);
+            this.setState({ ...this.state, ...Data });
+            console.log(Data);
+            localStorage.setItem('Data.todo', Data.todo);
             e.target.value = '';
         }
     }
@@ -34,7 +37,7 @@ class View1 extends React.Component {
                     </button>
                 </header>
 
-                <div><TodoAndCompleteItem /></div>
+                <div><TodoAndCompleteItem data={this.state.data} /></div>
 
 
             </div >

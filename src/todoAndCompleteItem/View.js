@@ -2,16 +2,17 @@ import React from 'react';
 import './style.css'
 import TodoItem from '../todoItem';
 import CompleteItem from '../completeItem';
-import { Data } from '../Data.js';
+//import { Data } from '../Data.js';
 
-function View() {
-    let dataLength = Data.todo.length + Data.completed.length;
-    console.log(`original datalength is ${dataLength}`);
-    if (dataLength >= 1) {
+function View(props) {
+    // let dataLength = props.data.todo.length + props.data.completed.length;
+    console.log("I'm here")
+    console.log(props.data);
+    if (props.data.todo.length >= 1) {
         return (
             <div className="toDoListContainer">
-                <TodoItem />
-                <CompleteItem />
+                <TodoItem data={props.data} />
+                <CompleteItem data={props.data} />
             </div>
         );
     }

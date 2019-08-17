@@ -1,6 +1,6 @@
 import React from 'react';
 import './style.css'
-import { Data } from '../Data.js';
+//import { Data } from '../Data.js';
 
 // class View extends Component {
 //     constructor(props) {
@@ -19,9 +19,9 @@ import { Data } from '../Data.js';
 //     }
 // }
 
-function View() {
+function View(props) {
 
-    let todoList = Data.todo.map((list) => <li key={list.toString()}> {list} </li>);
+    let todoList = props.data.todo.map((list) => <li key={list.toString()}> {list} </li>);
     let functionButtons = (<div className="buttons">
         <button className="remove">Delete</button>
         <button className="complete">Complete</button>

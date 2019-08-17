@@ -2,3 +2,4 @@ export const Data = (localStorage.getItem('todoList')) ? JSON.parse(localStorage
     todo: [],
     completed: []
 };
+
