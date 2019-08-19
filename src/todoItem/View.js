@@ -1,36 +1,34 @@
 import React from 'react';
 import './style.css'
-//import { Data } from '../Data.js';
-
-// class View extends Component {
-//     constructor(props) {
-//         super(props);
-//     }
-//     todoLists() {
-//         let todoList = Data.todo.map((list) => { <li key={list.toString()}> {list.JSON.parse()} </li> });
-//         return todoList;
-//     }
-//     render() {
-//         return (
-//             <ul class="todo" id="todo">
-//                 {todoLists()}
-//             </ul >
-//         );
-//     }
-// }
 
 function View(props) {
+    function removeHandeler(e) {
+        let grandParent = e.target.parentNode.parentNode;
+        let dataIndex = grandParent.dataset.index;
+        let todoArray = JSON.parse(localStorage.getItem('todoList')).todo;
 
-    let todoList = props.data.todo.map((list) => <li key={list.toString()}> {list} </li>);
-    let functionButtons = (<div className="buttons">
-        <button className="remove">Delete</button>
-        <button className="complete">Complete</button>
-    </div>);
+        //localStorage.getItem('todoList')
+        //let newLocalData = todoArray.filter((number) => dataSet !== todoArray.indexOf[number]);
+        let newtodoArray = todoArray.filter((number) => number !== todoArray[dataIndex]);
+        // props.data = { todo: newtodoArray, completed: [] };
+        //let todoArray = localStorage.getItem('Data.todo').todo;
+        console.log(newtodoArray)
+        console.log(props.data);
+    }
+    const completeHandeler = function () {
+
+    }
+    let functionButtons = (
+        <div className="buttons">
+            <button className="remove" onClick={removeHandeler}>Delete</button>
+            <button className="complete" onClick={completeHandeler}>Complete</button>
+        </div>);
+    let todoList = props.data.todo.map((list, index) => <li key={index} data-index={index}> {list} {functionButtons} </li>);
+
     return (
-
         <ul className="todo" id="todo">
             {todoList}
-            {functionButtons}
+
         </ul >
     );
 }
