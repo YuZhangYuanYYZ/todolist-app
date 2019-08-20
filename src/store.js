@@ -1,6 +1,7 @@
 
 const initialState = {
-    todos: [{ text: "finish reading", completed: false }],
+    todos: [],
+    completes: []
 }
 
 let state = initialState;
@@ -48,8 +49,25 @@ const store = {
     }
 }
 
+// state = {
+//     todos: [{ text: "finish reading", completed: false }, { text: "eat lunch", completed: false }],
+// }
 store.subscribe(() => {
-    console.log("store has got new data, you can setState now");
+    console.log("store has got new data, you can setState now", store.getState());
 })
-store.dispatch({ type: "ADD_TODO", payload: "eat lunch" });
+
+store.subscribe(() => {
+    console.log("store has get data, you can setState now");
+})
+
+export default store;
+// // currentListeners = [() => {
+// //     console.log("store has got new data, you can setState now");
+// // },
+// // () => {
+// //     console.log("store has get data, you can setState now");
+// // }
+
+// //]
+// store.dispatch({ type: "ADD_TODO", payload: "eat lunch" });
 
