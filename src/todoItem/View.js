@@ -4,10 +4,8 @@ import store from '../store.js'
 function View(props) {
     function removeHandeler(e) {
         let grandParent = e.target.parentNode.parentNode;
-        let dataIndex = grandParent.dataset.index;
-        let value = store.getState().todos.indexOf(dataIndex);
-
-        store.dispatch({ type: "DELETE", payload: value })
+        let dataIndex = Number(grandParent.dataset.index);
+        store.dispatch({ type: "DELETE_TODO", payload: dataIndex })
 
     }
     const completeHandeler = function (e) {

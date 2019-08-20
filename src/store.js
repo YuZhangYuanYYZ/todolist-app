@@ -20,6 +20,16 @@ const reducer = (originState, { type, payload }) => {
                     }
                 ]
             };
+        case "DELETE_TODO":
+            let targetIndex = payload;
+
+            let resultTodos = originState.todos.filter((todo, index) => index !== targetIndex);
+
+            return {
+                ...originState,
+                todos: resultTodos
+            }
+
         default:
             return originState
     }
@@ -52,13 +62,13 @@ const store = {
 // state = {
 //     todos: [{ text: "finish reading", completed: false }, { text: "eat lunch", completed: false }],
 // }
-store.subscribe(() => {
-    console.log("store has got new data, you can setState now", store.getState());
-})
+// store.subscribe(() => {
+//     console.log("store has got new data, you can setState now", store.getState());
+// })
 
-store.subscribe(() => {
-    console.log("store has get data, you can setState now");
-})
+// store.subscribe(() => {
+//     console.log("store has get data, you can setState now");
+// })
 
 export default store;
 // // currentListeners = [() => {
