@@ -11,11 +11,9 @@ function View(props) {
     const completeHandeler = function (e) {
         let grandParent = e.target.parentNode.parentNode;
         let dataIndex = grandParent.dataset.index;
-        console.log(store.getState().todos, store.getState().todos.indexOf(dataIndex))
-        let value = store.getState().todos.indexOf(dataIndex);
-
-        store.dispatch({ type: "DELETE", payload: value })
-
+        let value = Number(store.getState().todos[dataIndex].text);
+        store.dispatch({ type: "ADD_TODO_COMPLETE", payload: value });
+        console.log("here3"); console.log(store.getState())
     }
     let functionButtons = (
         <div className="buttons">

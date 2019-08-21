@@ -1,3 +1,4 @@
+import { arrayExpression } from "@babel/types";
 
 const initialState = {
     todos: [],
@@ -16,7 +17,6 @@ const reducer = (originState, { type, payload }) => {
                     ...originState.todos,
                     {
                         text: payload,
-                        completed: false
                     }
                 ]
             };
@@ -28,7 +28,24 @@ const reducer = (originState, { type, payload }) => {
             return {
                 ...originState,
                 todos: resultTodos
-            }
+            };
+        case "ADD_TODO_COMPLETE":
+            return {
+                ...originState,
+                completes: [
+                    ...originState.completes, payload
+
+                ]
+            };
+
+        case "ADD_COMPLETE_TODO":
+            return {
+                ...originState,
+                todos: [
+                    ...originState.todos, payload
+
+                ]
+            };
 
         default:
             return originState
