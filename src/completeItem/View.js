@@ -10,7 +10,7 @@ function View(props) {
         </div>
     );
 
-    let completeList = store.getState().completes.map((list, index) => <li key={index} data-index={index}> {list.text} {functionButtons} </li>);
+    let completeList = store.getState().completes.map((list, index) => <li key={index} data-index={index}> {list} {functionButtons} </li>);
 
 
     return (

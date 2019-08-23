@@ -17,14 +17,11 @@ class View extends React.Component {
     }
 
     render() {
-        console.log("here 2");
-        console.log(this.state.completes);
-        console.log(this.state.todos.length, this.state.completes.length)
         if ((this.state.todos.length >= 1) || (this.state.completes.length >= 1)) {
             return (
                 <div className="toDoListContainer">
-                    <TodoItem data={this.state.todos} />
-                    <CompleteItem data={this.state.completes} />
+                    <TodoItem />
+                    <CompleteItem />
                 </div>
             );
         }
@@ -37,3 +34,4 @@ class View extends React.Component {
 
 
 export default View;
+
