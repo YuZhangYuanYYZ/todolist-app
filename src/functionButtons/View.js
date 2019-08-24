@@ -44,8 +44,8 @@ class View extends React.Component {
     render() {
         return (
             <div className="buttons" >
-                <button className="remove" onClick={this.removeHandeler}>Delete</button>
-                <button className="complete" onClick={this.completeHandeler}>Complete</button>
+                <button className="remove" onClick={this.removeHandeler}>DELETE</button>
+                <button className="complete" onClick={this.completeHandeler}>COMPLETE</button>
             </div>
         )
     }
