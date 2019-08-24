@@ -13,20 +13,33 @@ class View extends React.Component {
             this.setState({ todos: store.getState().todos, completes: store.getState().completes })
         })
     }
-
-
     removeHandeler(e) {
         let grandParent = e.target.parentNode.parentNode;
+        let grandParentId = grandParent.parentNode.id;
         let dataIndex = Number(grandParent.dataset.index);
-        store.dispatch({ type: "DELETE_TODO", payload: dataIndex })
+        if (grandParentId === "todo") {
+            store.dispatch({ type: "DELETE_TODO", payload: dataIndex })
+        }
+        if (grandParentId === "completed") {
+            store.dispatch({ type: "DELETE_COMPLETE", payload: dataIndex })
+        }
 
     }
     completeHandeler(e) {
         let grandParent = e.target.parentNode.parentNode;
-        let dataIndex = grandParent.dataset.index;
-        let value = Number(store.getState().todos[dataIndex].text);
-        store.dispatch({ type: "ADD_TODO_COMPLETE", payload: value });
-        console.log("here3"); console.log(store.getState())
+        let grandParentId = grandParent.parentNode.id;
+        let dataIndex = Number(grandParent.dataset.index);
+        if (grandParentId === "todo") {
+            let value = Number(store.getState().todos[dataIndex].text);
+            store.dispatch({ type: "DELETE_TODO", payload: dataIndex });
+            store.dispatch({ type: "ADD_TODO_COMPLETE", payload: value });
+        }
+        if (grandParentId === "completed") {
+            let value = Number(store.getState().completes[dataIndex].text);
+            store.dispatch({ type: "DELETE_COMPLETE", payload: dataIndex });
+            store.dispatch({ type: "ADD_COMPLETE_TODO", payload: value });
+        }
+
     }
     render() {
         return (

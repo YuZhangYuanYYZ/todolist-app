@@ -1,4 +1,3 @@
-import { arrayExpression } from "@babel/types";
 
 const initialState = {
     todos: [],
@@ -17,23 +16,33 @@ const reducer = (originState, { type, payload }) => {
                     ...originState.todos,
                     {
                         text: payload,
+                        completed: false
                     }
                 ]
             };
         case "DELETE_TODO":
-            let targetIndex = payload;
+            let todoTargetIndex = payload;
 
-            let resultTodos = originState.todos.filter((todo, index) => index !== targetIndex);
+            let resultTodos = originState.todos.filter((todo, index) => index !== todoTargetIndex);
 
             return {
                 ...originState,
                 todos: resultTodos
             };
+        case "DELETE_COMPLETE":
+            let completeTargetIndex = payload;
+            let resultCompletes = originState.completes.filter((complete, index) => index !== completeTargetIndex);
+
+            return {
+                ...originState,
+                completes: resultCompletes
+            };
+
         case "ADD_TODO_COMPLETE":
             return {
                 ...originState,
                 completes: [
-                    ...originState.completes, payload
+                    ...originState.completes, { text: payload, completes: true }
 
                 ]
             };
@@ -42,7 +51,7 @@ const reducer = (originState, { type, payload }) => {
             return {
                 ...originState,
                 todos: [
-                    ...originState.todos, payload
+                    ...originState.todos, { text: payload, completes: false }
 
                 ]
             };

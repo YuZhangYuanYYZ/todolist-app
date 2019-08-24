@@ -1,16 +1,11 @@
 import React from 'react';
 import './style.css'
 import store from '../store.js'
+import FunctionButtons from '../functionButtons'
+
 function View(props) {
 
-    let functionButtons = (
-        <div className="buttons">
-            <button className="remove">Delete</button>
-            <button className="complete" >Complete</button>
-        </div>
-    );
-
-    let completeList = store.getState().completes.map((list, index) => <li key={index} data-index={index}> {list} {functionButtons} </li>);
+    let completeList = store.getState().completes.map((complete, index) => <li key={index} data-index={index}> {complete.text} <FunctionButtons /> </li>);
 
 
     return (

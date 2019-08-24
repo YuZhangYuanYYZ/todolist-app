@@ -206,7 +206,7 @@ header button SVG .fill {
     height: 30px;
     width: 1px;
 
-    background-color: #c0cecb;
+    background-color: grey;
     position: absolute;
     top: 4px;
     right: 46px;
@@ -222,7 +222,7 @@ header button SVG .fill {
     content: "You have yet not completed anything"
 }
 
-#completedItem:before {
+#completed:before {
     content: "";
     width: 150px;
     height: 1px;
@@ -230,7 +230,7 @@ header button SVG .fill {
     position: absolute;
     top: -15px;
     left: 50%;
-    margin: 0 0 0 -75px;
+    margin: 10px 0 0 -100px;
     background: #c0cecb;
 }
 
