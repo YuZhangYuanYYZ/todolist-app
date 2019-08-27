@@ -1,13 +1,10 @@
-
+import { createStore } from 'redux'
 const initialState = {
     todos: [],
     completes: []
 }
 
-let state = initialState;
-let currentListeners = [];
-
-const reducer = (originState, { type, payload }) => {
+function reducer(originState = initialState, { type, payload }) {
     switch (type) {
         case "ADD_TODO":
             return {
@@ -61,29 +58,32 @@ const reducer = (originState, { type, payload }) => {
     }
 };
 
-const store = {
-    getState: () => {
-        return state;
-    },
+const store = createStore(reducer);
+export default store;
 
-    dispatch: ({ type, payload }) => {
-        state = reducer(state, { type, payload })
+// const store = {
+//     getState: () => {
+//         return state;
+//     },
 
-        const listeners = currentListeners;
-        for (let i = 0; i < listeners.length; i++) {
-            const listener = listeners[i]
-            listener()
-        }
-    },
+//     dispatch: ({ type, payload }) => {
+//         state = reducer(state, { type, payload })
 
-    subscribe: (listener) => {
-        currentListeners.push(listener)
-        return function unsubscribe() {
-            const index = currentListeners.indexOf(listener)
-            currentListeners.splice(index, 1)
-        }
-    }
-}
+//         const listeners = currentListeners;
+//         for (let i = 0; i < listeners.length; i++) {
+//             const listener = listeners[i]
+//             listener()
+//         }
+//     },
+
+//     subscribe: (listener) => {
+//         currentListeners.push(listener)
+//         return function unsubscribe() {
+//             const index = currentListeners.indexOf(listener)
+//             currentListeners.splice(index, 1)
+//         }
+//     }
+// }
 
 // state = {
 //     todos: [{ text: "finish reading", completed: false }, { text: "eat lunch", completed: false }],
@@ -96,7 +96,7 @@ const store = {
 //     console.log("store has get data, you can setState now");
 // })
 
-export default store;
+
 // // currentListeners = [() => {
 // //     console.log("store has got new data, you can setState now");
 // // },
