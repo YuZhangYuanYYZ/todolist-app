@@ -1,3 +1,3 @@
-import View from './View'
+import FunctionButtons from './Container'
 
-export default View;
+export default FunctionButtons;

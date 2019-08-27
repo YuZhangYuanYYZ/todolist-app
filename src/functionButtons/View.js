@@ -8,11 +8,7 @@ class View extends React.Component {
         this.removeHandeler = this.removeHandeler.bind(this);
         this.completeHandeler = this.completeHandeler.bind(this);
     }
-    componentDidMount() {
-        store.subscribe(() => {
-            this.setState({ todos: store.getState().todos, completes: store.getState().completes })
-        })
-    }
+
     removeHandeler(e) {
         let grandParent = e.target.parentNode.parentNode.parentNode;
         let grandParentId = grandParent.parentNode.id;
@@ -31,12 +27,12 @@ class View extends React.Component {
         let dataIndex = Number(grandParent.dataset.index);
 
         if (grandParentId === "todo") {
-            let value = Number(store.getState().todos[dataIndex].text);
+            let value = Number(this.props.todos[dataIndex].text);
             store.dispatch({ type: "DELETE_TODO", payload: dataIndex });
-            store.dispatch({ type: "ADD_TODO_COMPLETE", payload: value });
+            this.props.onCompleteButtonClick(value)
         }
         if (grandParentId === "completed") {
-            let value = Number(store.getState().completes[dataIndex].text);
+            let value = Number(this.props.completes[dataIndex].text);
             store.dispatch({ type: "DELETE_COMPLETE", payload: dataIndex });
             store.dispatch({ type: "ADD_COMPLETE_TODO", payload: value });
         }
