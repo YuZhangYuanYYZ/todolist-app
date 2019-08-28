@@ -1,12 +1,7 @@
 import { connect } from 'react-redux'
 import View from './View'
 
-const addTodo = (payload) => {
-    return {
-        type: "ADD_TODO",
-        payload: payload
-    }
-};
+import { addTodo } from "../../redux/actions";
 
 const mapDispatchToProps = dispatch => {
     return {
