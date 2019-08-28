@@ -1,6 +1,5 @@
 import React from 'react';
 import './style.css'
-import store from '../store.js'
 class View extends React.Component {
     constructor(props) {
         super(props);
@@ -14,10 +13,10 @@ class View extends React.Component {
         let grandParentId = grandParent.parentNode.id;
         let dataIndex = Number(grandParent.dataset.index);
         if (grandParentId === "todo") {
-            store.dispatch({ type: "DELETE_TODO", payload: dataIndex })
+            this.props.onTodoDeleteButtonClick(dataIndex);
         }
         if (grandParentId === "completed") {
-            store.dispatch({ type: "DELETE_COMPLETE", payload: dataIndex })
+            this.props.onCompleteDeleteButtonClick(dataIndex);
         }
 
     }
@@ -27,14 +26,15 @@ class View extends React.Component {
         let dataIndex = Number(grandParent.dataset.index);
 
         if (grandParentId === "todo") {
-            let value = Number(this.props.todos[dataIndex].text);
-            store.dispatch({ type: "DELETE_TODO", payload: dataIndex });
-            this.props.onCompleteButtonClick(value)
+            let value = this.props.todos[dataIndex].text;
+            this.props.onTodoDeleteButtonClick(dataIndex);
+            this.props.onTodoCompleteButtonClick(value);
         }
         if (grandParentId === "completed") {
-            let value = Number(this.props.completes[dataIndex].text);
-            store.dispatch({ type: "DELETE_COMPLETE", payload: dataIndex });
-            store.dispatch({ type: "ADD_COMPLETE_TODO", payload: value });
+            let value = this.props.completes[dataIndex].text;
+            this.props.onCompleteDeleteButtonClick(dataIndex);
+            this.props.onCompletedCompleteButtonClick(value);
+
         }
 
     }
