@@ -6,28 +6,19 @@ import store from '../store.js'
 
 
 class View extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = { todos: [], completes: [] }
-    }
-    componentDidMount() {
-        store.subscribe(() => {
-            this.setState({ todos: store.getState().todos, completes: store.getState().completes });
-        })
-    }
+    // componentDidMount() {
+    //     store.subscribe(() => {
+    //         this.setState({ todos: store.getState().todos, completes: store.getState().completes });
+    //     })
+    // }
 
     render() {
-        if ((this.state.todos.length >= 1) || (this.state.completes.length >= 1)) {
-            return (
-                <div className="toDoListContainer">
-                    <TodoItem />
-                    <CompleteItem />
-                </div>
-            );
-        }
-        else {
-            return null;
-        }
+        return (
+            <div className="toDoListContainer">
+                <TodoItem />
+                <CompleteItem />
+            </div>
+        );
     }
 
 }

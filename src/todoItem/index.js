@@ -1,3 +1,3 @@
-import View from './View'
+import TodoList from './Container'
 
-export default View;
+export default TodoList;

@@ -1,3 +1,3 @@
-import View from './View'
+import CompleteItem from './Container'
 
-export default View;
+export default CompleteItem;

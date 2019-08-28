@@ -1,9 +1,8 @@
 import React from 'react';
 import './style.css'
-//import { Data } from '../Data.js';
 import TodoAndCompleteItem from '../todoAndCompleteItem'
-import store from '../store.js'
-class View1 extends React.Component {
+
+class View extends React.Component {
     constructor(props) {
         super(props);
         this.addItemByEnter = this.addItemByEnter.bind(this)
@@ -12,9 +11,7 @@ class View1 extends React.Component {
     addItemByEnter(e) {
         let inputValue = e.target.value;
         if ((inputValue) && ((e.key === 'Enter') || (e.key === 'NumpadEnter'))) {
-            //Data.todo.push(inputValue);
-            store.dispatch({ type: "ADD_TODO", payload: inputValue });
-            //localStorage.setItem('Data.todo', Data.todo);
+            this.props.onInputEnter(inputValue);
             e.target.value = '';
         }
     }
@@ -38,11 +35,9 @@ class View1 extends React.Component {
                 </header>
 
                 <div><TodoAndCompleteItem /></div>
-
-
             </div >
         )
     }
 }
 
-export default View1;
+export default View;

@@ -35,25 +35,23 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = dispatch => {
-    return (
-        {
-            onCompletedCompleteButtonClick: payload => {
-                dispatch(addCompleteToTodo(payload))
-            },
+    return {
+        onCompletedCompleteButtonClick: payload => {
+            dispatch(addCompleteToTodo(payload))
+        },
 
-            onTodoCompleteButtonClick: payload => {
-                dispatch(addTodoToComplete(payload))
-            },
+        onAddTodoToComplete: payload => {
+            dispatch(addTodoToComplete(payload))
+        },
 
-            onTodoDeleteButtonClick: payload => {
-                dispatch(deleteTodo(payload));
-            },
+        onTodoDeleteButtonClick: payload => {
+            dispatch(deleteTodo(payload));
+        },
 
-            onCompleteDeleteButtonClick: payload => {
-                dispatch(deleteComplete(payload));
-            }
-        });
-
+        onCompleteDeleteButtonClick: payload => {
+            dispatch(deleteComplete(payload));
+        }
+    };
 }
 
 const FunctionButtons = connect(
