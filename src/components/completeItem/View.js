@@ -4,7 +4,11 @@ import FunctionButtons from '../functionButtons'
 
 function View(props) {
 
-    let completeList = props.completes && props.completes.map((complete, index) => <li key={index} data-index={index}> {complete.text} <FunctionButtons /> </li>);
+    let completeList = props.todos && props.todos.map((todo, index) => {
+        if (todo.completed === true) {
+            return (<li key={index} data-index={index}> {todo.text} <FunctionButtons /> </li>);
+        }
+    });
 
 
     return (

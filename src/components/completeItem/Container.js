@@ -3,13 +3,13 @@ import View from './View'
 
 const mapStateToProps = state => {
     return {
-        completes: state.completes,
+        todos: state.todos,
     }
 }
 
-const CompleteItem = connect(
+const TodoItem = connect(
     mapStateToProps
 )(View)
 
-export default CompleteItem;
+export default TodoItem;
 

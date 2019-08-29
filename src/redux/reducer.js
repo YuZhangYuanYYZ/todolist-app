@@ -1,9 +1,7 @@
-import { ADD_TODO } from './actions';
+import { ADD_TODO, DELETE_ITEM, COMPLETE_TOGGLE, } from './actions';
 const initialState = {
     todos: [],
-    completes: []
 }
-
 function reducer(originState = initialState, { type, payload }) {
     switch (type) {
         case ADD_TODO:
@@ -17,45 +15,25 @@ function reducer(originState = initialState, { type, payload }) {
                     }
                 ]
             };
-        case "DELETE_TODO":
-            let todoTargetIndex = payload;
-
-            let resultTodos = originState.todos.filter((todo, index) => index !== todoTargetIndex);
-
+        case DELETE_ITEM: //let todoTargetIndex = payload;
+            let resultTodos = originState.todos.filter((todo, index) => index !== payload);
             return {
-                ...originState,
                 todos: resultTodos
             };
-        case "DELETE_COMPLETE":
-            let completeTargetIndex = payload;
-            let resultCompletes = originState.completes.filter((complete, index) => index !== completeTargetIndex);
-
+        case COMPLETE_TOGGLE:
+            let mapResultTodos = originState.todos.map((todo, index) => {
+                if (index === payload) {
+                    todo.completed = !todo.completed;
+                }
+                return todo;
+            });
             return {
-                ...originState,
-                completes: resultCompletes
+                todos: mapResultTodos
             };
 
-        case "ADD_TODO_COMPLETE":
-            return {
-                ...originState,
-                completes: [
-                    ...originState.completes, { text: payload, completes: true }
-
-                ]
-            };
-
-        case "ADD_COMPLETE_TODO":
-            return {
-                ...originState,
-                todos: [
-                    ...originState.todos, { text: payload, completes: false }
-
-                ]
-            };
 
         default:
             return originState
     }
 };
-
 export default reducer;

@@ -1,31 +1,7 @@
 import { connect } from 'react-redux'
 import View from './View'
-
-const addTodoToComplete = (payload) => {
-    return {
-        type: "ADD_TODO_COMPLETE",
-        payload: payload
-    }
-};
-const deleteTodo = (payload) => {
-    return {
-        type: "DELETE_TODO",
-        payload: payload
-    }
-}
-const deleteComplete = (payload) => {
-    return {
-        type: "DELETE_COMPLETE",
-        payload: payload
-    }
-}
-const addCompleteToTodo = (payload) => {
-    return {
-        type: "ADD_COMPLETE_TODO",
-        payload: payload
-    }
-}
-
+import { completeToggle } from "../../redux/actions";
+import { deleteTodo } from "../../redux/actions";
 
 const mapStateToProps = state => {
     return {
@@ -36,20 +12,12 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onCompletedCompleteButtonClick: payload => {
-            dispatch(addCompleteToTodo(payload))
+        onCompleteToggle: payload => {
+            dispatch(completeToggle(payload))
         },
 
-        onAddTodoToComplete: payload => {
-            dispatch(addTodoToComplete(payload))
-        },
-
-        onTodoDeleteButtonClick: payload => {
+        onDeleteItem: payload => {
             dispatch(deleteTodo(payload));
-        },
-
-        onCompleteDeleteButtonClick: payload => {
-            dispatch(deleteComplete(payload));
         }
     };
 }
