@@ -1,8 +1,9 @@
 import React from 'react';
 import './style.css'
 import FunctionButtons from '../functionButtons'
-function View(props) {
-    let todoList = props.todos && props.todos.map((todo, index) => {
+import PropTypes from 'prop-types'
+function View({ todos }) {
+    let todoList = todos && todos.map((todo, index) => {
         if (todo.completed === false) {
             return (<li key={index} data-index={index}> {todo.text} <FunctionButtons /> </li>)
         }
@@ -13,5 +14,8 @@ function View(props) {
             {todoList}
         </ul >
     );
+}
+View.propoTypes = {
+    todos: PropTypes.array.isRequired,
 }
 export default View;

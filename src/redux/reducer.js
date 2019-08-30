@@ -1,10 +1,10 @@
-import { ADD_TODO, DELETE_ITEM, COMPLETE_TOGGLE, } from './actions';
+import { actionTypes } from './actions';
 const initialState = {
     todos: [],
 }
 function reducer(originState = initialState, { type, payload }) {
     switch (type) {
-        case ADD_TODO:
+        case actionTypes.ADD_TODO:
             return {
                 ...originState,
                 todos: [
@@ -15,12 +15,12 @@ function reducer(originState = initialState, { type, payload }) {
                     }
                 ]
             };
-        case DELETE_ITEM: //let todoTargetIndex = payload;
+        case actionTypes.DELETE_ITEM: //let todoTargetIndex = payload;
             let resultTodos = originState.todos.filter((todo, index) => index !== payload);
             return {
                 todos: resultTodos
             };
-        case COMPLETE_TOGGLE:
+        case actionTypes.COMPLETE_TOGGLE:
             let mapResultTodos = originState.todos.map((todo, index) => {
                 if (index === payload) {
                     todo.completed = !todo.completed;
