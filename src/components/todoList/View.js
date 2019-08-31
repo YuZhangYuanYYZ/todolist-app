@@ -1,18 +1,19 @@
 import React from 'react';
 import './style.css'
 import TodoAndCompleteItem from '../todoAndCompleteItem'
-
+import ChooseFilter from '../chooseFilter'
 class View extends React.Component {
     constructor(props) {
         super(props);
         this.addItemByEnter = this.addItemByEnter.bind(this)
+
     }
 
     addItemByEnter(e) {
-        let inputValue = e.target.value;
+        let inputValue = this.input.value;
         if ((inputValue) && ((e.key === 'Enter') || (e.key === 'NumpadEnter'))) {
             this.props.onInputEnter(inputValue);
-            e.target.value = '';
+            this.input.value = '';
         }
     }
 
@@ -21,7 +22,7 @@ class View extends React.Component {
         return (
             <div>
                 <header>
-                    <input id="item" placeholder="Enter your todolist" onKeyDown={this.addItemByEnter}></input>
+                    <input ref={node => this.input = node} id="item" placeholder="Enter your todolist" onKeyDown={this.addItemByEnter}></input>
                     <button id="add">
                         <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" x="0px"
                             // eslint-disable-next-line react/style-prop-object
@@ -35,6 +36,7 @@ class View extends React.Component {
                 </header>
 
                 <div><TodoAndCompleteItem /></div>
+                <div><ChooseFilter /></div>
             </div >
         )
     }

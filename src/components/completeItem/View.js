@@ -8,6 +8,9 @@ function View(props) {
         if (todo.completed === true) {
             return (<li key={index} data-index={index}> {todo.text} <FunctionButtons /> </li>);
         }
+        else {
+            return null;
+        }
     });
 
 

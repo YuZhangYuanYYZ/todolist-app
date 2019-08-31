@@ -6,7 +6,6 @@ import { deleteTodo } from "../../redux/actions";
 const mapStateToProps = state => {
     return {
         todos: state.todos,
-        completes: state.completes,
     }
 }
 

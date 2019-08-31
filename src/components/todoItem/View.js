@@ -7,6 +7,9 @@ function View({ todos }) {
         if (todo.completed === false) {
             return (<li key={index} data-index={index}> {todo.text} <FunctionButtons /> </li>)
         }
+        else {
+            return null;
+        }
     });
 
     return (
@@ -15,7 +18,7 @@ function View({ todos }) {
         </ul >
     );
 }
-View.propoTypes = {
+View.propTypes = {
     todos: PropTypes.array.isRequired,
 }
 export default View;

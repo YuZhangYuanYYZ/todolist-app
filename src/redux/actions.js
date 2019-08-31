@@ -1,7 +1,26 @@
 export const actionTypes = {
     ADD_TODO: 'ADD_TODO',
     DELETE_ITEM: 'DELETE_ITEM',
-    COMPLETE_TOGGLE: 'COMPLETE_TOGGLE'
+    COMPLETE_TOGGLE: 'COMPLETE_TOGGLE',
+    SHOW_ALL: 'SHOW_ALL',
+    SHOW_ACTIVE: 'SHOW_ACTIVE',
+    SHOW_COMPLETED: 'SHOW_ACTIVE'
+}
+
+export const showAll = () => {
+    return {
+        type: actionTypes.SHOW_ALL,
+    }
+}
+export const showActive = () => {
+    return {
+        type: actionTypes.SHOW_ACTIVE,
+    }
+}
+export const showCompleted = () => {
+    return {
+        type: actionTypes.SHOW_COMPLETED,
+    }
 }
 
 export const addTodo = (payload) => {
