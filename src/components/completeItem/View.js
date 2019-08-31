@@ -5,7 +5,7 @@ import FunctionButtons from '../functionButtons'
 function View({ todos, filter }) {
 
     let completeList = todos && todos.map((todo, index) => {
-        if ((todo.completed === true) && ((todo.filter = "SHOW_ALL") || (todo.filter = "SHOW_COMPLETED"))) {
+        if ((todo.completed === true) && ((todo.filter === "SHOW_ALL") || (todo.filter === "SHOW_COMPLETED"))) {
             return (<li key={index} data-index={index}> {todo.text} <FunctionButtons /> </li>);
         }
         else {

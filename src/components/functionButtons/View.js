@@ -9,12 +9,12 @@ class View extends React.Component {
     }
 
     removeHandeler(e) {
-        let grandParent = e.target.parentNode.parentNode;
+        let grandParent = e.target.parentNode.parentNode.parentNode;
         let dataIndex = Number(grandParent.dataset.index);
         this.props.onDeleteItem(dataIndex);
     }
     completeHandeler(e) {
-        let grandParent = e.target.parentNode.parentNode;
+        let grandParent = e.target.parentNode.parentNode.parentNode;
         let dataIndex = Number(grandParent.dataset.index);
         this.props.onCompleteToggle(dataIndex);
     }
