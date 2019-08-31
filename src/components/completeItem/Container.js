@@ -1,17 +1,20 @@
 import { connect } from 'react-redux'
 import View from './View'
-function completedTodos(todos, filter) {
-    if ((filter === "SHOW_ALL") || (filter === "SHOW_COMPLETED")) {
-        return todos.filter((todo) => todo.completed === true)
+function getVisibleTodos(todos, filter) {
+    if (filter === "SHOW_COMPLETED") {
+        return todos.filter((todo) => todo.completed)
     }
-    else {
-        return [];
+    else if (filter === "SHOW_ACTIVE") {
+        return todos.filter((todo) => !todo.completed)
+    }
+    else if (filter === "SHOW_ALL") {
+        return todos;
     }
 }
 
 const mapStateToProps = state => {
     return {
-        todos: completedTodos(state.todos, state.filter),
+        todos: getVisibleTodos(state.todos, state.filter),
         filter: state.filter
     }
 }

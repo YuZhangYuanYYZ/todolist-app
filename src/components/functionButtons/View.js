@@ -16,6 +16,7 @@ class View extends React.Component {
     completeHandeler(e) {
         let grandParent = e.target.parentNode.parentNode.parentNode;
         let dataIndex = Number(grandParent.dataset.index);
+        console.log(grandParent, dataIndex, "grandParent,dataIndex")
         this.props.onCompleteToggle(dataIndex);
     }
     render() {

@@ -3,7 +3,7 @@ import './style.css'
 import CommonTodoList from '../CommonTodoList'
 
 function View({ todos }) {
-    return (<CommonTodoList todos={todos} id="completed" />)
+    return (<CommonTodoList todos={todos} />)
 }
 
 export default View;
