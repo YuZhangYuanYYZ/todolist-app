@@ -1,17 +1,9 @@
 import React from 'react';
 import './style.css'
-import FunctionButtons from '../functionButtons'
+import CommonTodoList from '../CommonTodoList'
 
-function View(props) {
-
-    let completeList = props.todos && props.todos.map((todo, index) => {
-        return (<li key={index} data-index={index}> {todo.text} <FunctionButtons /> </li>);
-    });
-    return (
-        <ul className="todo" id="completed">
-            {completeList}
-        </ul >
-    );
+function View({ todos }) {
+    return (<CommonTodoList todos={todos} id="completed" />)
 }
 
 export default View;
