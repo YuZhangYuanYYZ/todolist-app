@@ -1,9 +1,17 @@
 import { connect } from 'react-redux'
 import View from './View'
+function completedTodos(todos, filter) {
+    if ((filter === "SHOW_ALL") || (filter === "SHOW_COMPLETED")) {
+        return todos.filter((todo) => todo.completed === true)
+    }
+    else {
+        return [];
+    }
+}
 
 const mapStateToProps = state => {
     return {
-        todos: state.todos,
+        todos: completedTodos(state.todos, state.filter),
         filter: state.filter
     }
 }

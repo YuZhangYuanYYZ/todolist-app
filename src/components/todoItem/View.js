@@ -4,23 +4,15 @@ import FunctionButtons from '../functionButtons'
 import PropTypes from 'prop-types'
 function View({ todos, filter }) {
     let todoList = todos && todos.map((todo, index) => {
-        if (todo.completed === false) {
-            return (<li key={index} data-index={index}> {todo.text} <FunctionButtons /> </li>)
-        }
-        else {
-            return null;
-        }
-    });
-    if ((filter === "SHOW_ALL") || (filter === "SHOW_ACTIVE")) {
-        return (
-            <ul className="todo" id="todo">
-                {todoList}
-            </ul >
-        );
+        return (<li key={index} data-index={index}> {todo.text} <FunctionButtons /> </li>)
     }
-    else {
-        return null
-    }
+    );
+    return (
+        <ul className="todo" id="todo">
+            {todoList}
+        </ul >
+    );
+
 
 }
 View.propTypes = {
