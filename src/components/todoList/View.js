@@ -37,7 +37,7 @@ class View extends React.Component {
 
                 <div><TodoAndCompleteItem /></div>
                 <div><ChooseFilter /></div>
-            </div >
+            </div>
         )
     }
 }

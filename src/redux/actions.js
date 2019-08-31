@@ -4,7 +4,7 @@ export const actionTypes = {
     COMPLETE_TOGGLE: 'COMPLETE_TOGGLE',
     SHOW_ALL: 'SHOW_ALL',
     SHOW_ACTIVE: 'SHOW_ACTIVE',
-    SHOW_COMPLETED: 'SHOW_ACTIVE'
+    SHOW_COMPLETED: 'SHOW_COMPLETED'
 }
 
 export const showAll = () => {
