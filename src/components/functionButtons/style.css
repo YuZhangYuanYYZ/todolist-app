@@ -1,0 +1,56 @@
+.toggleComplete:hover SVG {
+    background-color: #25b99a;
+}
+
+.toggleComplete:hover SVG {
+    transition: background 0.2s ease;
+    fill: 0.2s ease;
+}
+
+.toggleComplete {
+    width: 40px;
+    height: 40px;
+    background-color: #fff;
+    border: none;
+    cursor: pointer;
+    top: 4px;
+    position: absolute;
+    right: 7px;
+    font-size: 13px;
+}
+
+.toggleComplete SVG {
+    width: 22px;
+    height: 22px;
+    background-color: #fff;
+    border-radius: 11px;
+    border: 1.5px solid #25b99a;
+}
+
+.toggleComplete SVG path {
+    fill: #fff;
+
+}
+
+.toggleComplete:before {
+    content: '';
+    height: 30px;
+    width: 1px;
+
+    background-color: #c0cecb;
+    position: absolute;
+    top: 4px;
+    right: 46px;
+}
+
+
+.toggleComplete:hover SVG path {
+    fill: white;
+}
+
+
+
+.toggleComplete SVG path {
+    fill: #25b99a;
+
+}

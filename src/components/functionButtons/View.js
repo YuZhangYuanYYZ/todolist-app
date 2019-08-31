@@ -31,7 +31,7 @@ class View extends React.Component {
                                     <path className="fill" d="M14,18c-0.4,0-0.6-0.3-0.6-0.6v-6.8c0-0.4,0.3-0.6,0.6-0.6c0.4,0,0.6,0.3,0.6,0.6v6.8C14.6,17.7,14.3,18,14,18z" /></g></g></g>
                     </svg>
                 </button>
-                <button className="complete" onClick={this.completeHandeler} >
+                <button className="toggleComplete" onClick={this.completeHandeler} >
                     <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 22 22" style={{ enablebackground: "new 0 0 22 2" }} space="preserve">
                         <rect y="0" className="noFill" width="22" height="22" />
                         <g>

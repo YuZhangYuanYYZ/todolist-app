@@ -2,7 +2,7 @@ import React from 'react';
 import './style.css'
 import FunctionButtons from '../functionButtons'
 import PropTypes from 'prop-types'
-function View({ todos, filter }) {
+function View({ todos }) {
     let todoList = todos && todos.map((todo, index) => {
         return (<li key={index} data-index={index}> {todo.text} <FunctionButtons /> </li>)
     }
