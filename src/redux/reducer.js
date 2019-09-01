@@ -6,6 +6,11 @@ const initialState = {
 
 function reducer(originState = initialState, { type, payload }) {
     switch (type) {
+        case actionTypes.RECEIVE_TODOS:
+            return {
+                ...originState,
+                todos: payload
+            }
         case actionTypes.SHOW_ALL:
             return {
                 ...originState,
