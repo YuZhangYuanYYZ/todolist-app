@@ -2,13 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 import TodoList from './components/todoList';
 import store from './redux/store'
+import { receiveTodos } from './redux/actions'
 
-const receiveTodos = (payload) => {
-  return {
-    type: "RECEIVE_TODOS",
-    payload: payload,
-  }
-}
 
 async function getTodos() {
   window.fetch('http://localhost:3004/todos')

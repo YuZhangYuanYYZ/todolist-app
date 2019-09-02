@@ -11,7 +11,6 @@ class Filter extends React.Component {
         this.props.onActiveClick();
     }
     buttonCompletedHandler() {
-        console.log("here completed")
         this.props.onCompletedClick();
     }
 

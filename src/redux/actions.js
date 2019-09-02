@@ -7,7 +7,12 @@ export const actionTypes = {
     SHOW_COMPLETED: 'SHOW_COMPLETED',
     RECEIVE_TODOS: 'RECEIVE_TODOS'
 }
-
+export const receiveTodos = (payload) => {
+    return {
+        type: actionTypes.RECEIVE_TODOS,
+        payload: payload,
+    }
+}
 export const showAll = () => {
     return {
         type: actionTypes.SHOW_ALL,

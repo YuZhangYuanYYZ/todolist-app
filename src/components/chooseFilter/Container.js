@@ -11,8 +11,6 @@ const mapDispatchToProps = dispatch => {
             dispatch(showActive())
         },
         onCompletedClick: () => {
-            console.log("entercompleted")
-
             dispatch(showCompleted())
         },
 

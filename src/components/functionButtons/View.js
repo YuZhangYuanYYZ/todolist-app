@@ -1,23 +1,58 @@
 import React from 'react';
 import './style.css'
+// import store from "../../redux/store";
 class View extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { todos: [], completes: [] };
+        // this.state = { todos: [], completes: [] };
         this.removeHandeler = this.removeHandeler.bind(this);
         this.completeHandeler = this.completeHandeler.bind(this);
     }
 
-    removeHandeler(e) {
-        let grandParent = e.target.parentNode.parentNode.parentNode;
-        let dataIndex = Number(grandParent.dataset.index);
-        this.props.onDeleteItem(dataIndex);
+    deleteTodos(index, deleteOption, dataIndex) {
+        window.fetch('http://localhost:3004/todos/' + index, deleteOption)
+            .then(res => res.json())
+            .then(json => {
+                this.props.onDeleteItem(dataIndex);
+            });
     }
-    completeHandeler(e) {
-        let grandParent = e.target.parentNode.parentNode.parentNode;
+    removeHandeler(e) {
+        const deleteOption = {
+            method: 'DELETE'
+        };
+        let grandParent = e.target.parentNode.parentNode;
         let dataIndex = Number(grandParent.dataset.index);
-        console.log(grandParent, dataIndex, "grandParent,dataIndex")
-        this.props.onCompleteToggle(dataIndex);
+        if (!isNaN(dataIndex)) {
+            this.deleteTodos(this.props.todos[dataIndex].id, deleteOption, dataIndex);
+        }
+    }
+    changeTodosState(id, putOptions, dataIndex) {
+        window.fetch('http://localhost:3004/todos/' + id, putOptions)
+            .then(res => res.json())
+            .then(json => {
+                this.props.onCompleteToggle(dataIndex);
+            });
+    }
+
+    completeHandeler(e) {
+        let grandParent = e.target.parentNode.parentNode;
+        let dataIndex = Number(grandParent.dataset.index);
+        if (!isNaN(dataIndex)) {
+            const putOptions = {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    text: this.props.todos[dataIndex].text,
+                    id: this.props.todos[dataIndex].id,
+                    completed: !this.props.todos[dataIndex].completed
+                })
+            }
+            this.changeTodosState(this.props.todos[dataIndex].id, putOptions, dataIndex);
+
+        }
+
     }
     render() {
         return (

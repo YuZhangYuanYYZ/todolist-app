@@ -2,18 +2,35 @@ import React from 'react';
 import './style.css'
 import TodoAndCompleteItem from '../todoAndCompleteItem'
 import ChooseFilter from '../chooseFilter'
+
 class View extends React.Component {
     constructor(props) {
         super(props);
         this.addItemByEnter = this.addItemByEnter.bind(this)
 
     }
-
+    postTodo(postOptions, inputValue) {
+        fetch('http://localhost:3004/todos', postOptions)
+            .then(res => res.json())
+            .then(json => {
+                this.props.onInputEnter(json)
+            });
+    }
     addItemByEnter(e) {
         let inputValue = this.input.value;
         if ((inputValue) && ((e.key === 'Enter') || (e.key === 'NumpadEnter'))) {
-            this.props.onInputEnter(inputValue);
             this.input.value = '';
+            const postOptions = {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    text: inputValue,
+                    completed: false
+                })
+            }
+            this.postTodo(postOptions, inputValue);
         }
     }
 

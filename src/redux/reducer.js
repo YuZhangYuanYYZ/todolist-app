@@ -3,7 +3,6 @@ const initialState = {
     todos: [],
     filter: "SHOW_ALL"
 }
-
 function reducer(originState = initialState, { type, payload }) {
     switch (type) {
         case actionTypes.RECEIVE_TODOS:
@@ -33,10 +32,7 @@ function reducer(originState = initialState, { type, payload }) {
                 ...originState,
                 todos: [
                     ...originState.todos,
-                    {
-                        text: payload,
-                        completed: false
-                    }
+                    payload
                 ]
             };
         case actionTypes.DELETE_ITEM:
@@ -47,14 +43,12 @@ function reducer(originState = initialState, { type, payload }) {
             };
         case actionTypes.COMPLETE_TOGGLE:
             let mapResultTodos = originState.todos.map((todo, index) => {
-                console.log(payload, todo, "here index")
                 if (index === payload) {
 
                     todo.completed = !todo.completed;
                 }
                 return todo;
             });
-            //  console.log(mapResultTodos, "here resulttodos")
             return {
                 ...originState,
                 todos: mapResultTodos
