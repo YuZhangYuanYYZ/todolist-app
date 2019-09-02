@@ -38,18 +38,18 @@ class View extends React.Component {
         let grandParent = e.target.parentNode.parentNode;
         let dataIndex = Number(grandParent.dataset.index);
         if (!isNaN(dataIndex)) {
+            const todo = this.props.todos[dataIndex];
             const putOptions = {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    text: this.props.todos[dataIndex].text,
-                    id: this.props.todos[dataIndex].id,
-                    completed: !this.props.todos[dataIndex].completed
+                    ...todo,
+                    completed: !todo.completed
                 })
             }
-            this.changeTodosState(this.props.todos[dataIndex].id, putOptions, dataIndex);
+            this.changeTodosState(todo.id, putOptions, dataIndex);
 
         }
 
