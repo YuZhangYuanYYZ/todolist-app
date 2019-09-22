@@ -22,8 +22,9 @@ class View extends React.Component {
         };
         let grandParent = e.target.parentNode.parentNode;
         let dataIndex = Number(grandParent.dataset.index);
+       // console.log(this.props.todos[dataIndex]._id,"id")
         if (!isNaN(dataIndex)) {
-            this.deleteTodos(this.props.todos[dataIndex].id, deleteOption, dataIndex);
+            this.deleteTodos(this.props.todos[dataIndex]._id, deleteOption, dataIndex);
         }
     }
     changeTodosState(id, putOptions, dataIndex) {
@@ -39,6 +40,7 @@ class View extends React.Component {
         let dataIndex = Number(grandParent.dataset.index);
         if (!isNaN(dataIndex)) {
             const todo = this.props.todos[dataIndex];
+            console.log(todo.completed,"completed")
             const putOptions = {
                 method: 'PUT',
                 headers: {
@@ -49,7 +51,7 @@ class View extends React.Component {
                     completed: !todo.completed
                 })
             }
-            this.changeTodosState(todo.id, putOptions, dataIndex);
+            this.changeTodosState(this.props.todos[dataIndex]._id, putOptions, dataIndex);
 
         }
 

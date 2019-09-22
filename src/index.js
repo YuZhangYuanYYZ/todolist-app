@@ -2,13 +2,20 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import Home from './Home';
 import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux'
 import store from './redux/store'
+import {BrowserRouter as Router,Route,Link} from 'react-router-dom';
+import { createBrowserHistory } from "history";
 
+const history = createBrowserHistory()
 ReactDOM.render(
-    <Provider store={store}>
-        <App />
+    <Provider store={store}>      
+        <Router history={history}>
+        <Route exact={true}  path='/' component={Home}></Route>
+        <Route path='/todoList' component={App}></Route>
+        </Router>
     </Provider>
     , document.getElementById('root'));
 
