@@ -1,0 +1,17 @@
+.completed-li .toggleComplete SVG {
+    background-color: #25b99a;
+
+}
+
+.completed-li .toggleComplete SVG path {
+    fill: white;
+}
+
+.todo-li .toggleComplete SVG {
+    background-color: #fff;
+
+}
+
+.todo-li .toggleComplete SVG path {
+    fill: #25b99a;
+}
