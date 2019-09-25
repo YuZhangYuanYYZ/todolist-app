@@ -26,6 +26,11 @@ function reducer(originState = initialState, { type, payload }) {
                 ...originState,
                 filter: "SHOW_COMPLETED"
             }
+        case actionTypes.SET_TODOS:
+            return{
+                ...originState,
+                todos:payload
+            }
 
         case actionTypes.ADD_TODO:
             return {

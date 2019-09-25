@@ -1,22 +1,29 @@
 import React from 'react';
 import FunctionButtons from './functionButtons'
-
+import { Draggable , Droppable } from "react-beautiful-dnd";
 function convertDataToClassName(todo) {
     return todo.completed ? "completed-li" : "todo-li";
 }
 
-function CommonTodoList({ todos }) {
-    const completeList = todos && todos.map((todo, index) => {
+function CommonTodoList(props) {
+    //const completeList = todos && todos.map((todo, index) => {
         return (
-            <li key={index} data-index={index} className={convertDataToClassName(todo)}>
-                {todo.text} <FunctionButtons />
-            </li>);
-    });
-    return (
-        <ul className="todo">
-            {completeList}
-        </ul >
-    );
+            <Draggable key={props.todo.id} draggableId="draggable-1" index={props.index}>
+    {(provided, snapshot) => (
+  <div
+    ref={provided.innerRef}
+    {...provided.draggableProps}
+    {...provided.dragHandleProps}
+    style={{ backgroundColor: provided.isDragging ? 'green' : 'lightblue' }}
+  >
+    {
+     <li key={props.todo.id} data-index={props.index} className={convertDataToClassName(props.todo)}>
+                {props.todo.text} <FunctionButtons />
+            </li>
+    }
+  </div>
+)}
+</Draggable>);
 }
 
 export default CommonTodoList;

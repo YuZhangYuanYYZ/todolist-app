@@ -5,7 +5,14 @@ export const actionTypes = {
     SHOW_ALL: 'SHOW_ALL',
     SHOW_ACTIVE: 'SHOW_ACTIVE',
     SHOW_COMPLETED: 'SHOW_COMPLETED',
-    RECEIVE_TODOS: 'RECEIVE_TODOS'
+    RECEIVE_TODOS: 'RECEIVE_TODOS',
+    SET_TODOS:'SET_TODOS'
+}
+export const setTodo = (payload) => {
+    return {
+        type: actionTypes.SET_TODOS,
+        payload: payload,
+    }
 }
 export const receiveTodos = (payload) => {
     return {
