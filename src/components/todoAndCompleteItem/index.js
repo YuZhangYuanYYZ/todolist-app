@@ -1,3 +1,3 @@
-import View from './View'
+import WholeItems from './Container'
 
-export default View;
+export default WholeItems;

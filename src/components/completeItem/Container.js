@@ -8,7 +8,7 @@ function getVisibleTodos(todos, filter) {
         return todos.filter((todo) => !todo.completed)
     }
     else if (filter === "SHOW_ALL") {
-        return todos;
+        return todos
     }
 }
 

@@ -6,20 +6,19 @@ function convertDataToClassName(todo) {
 }
 
 function CommonTodoList(props) {
-    //const completeList = todos && todos.map((todo, index) => {
-        return (
-            <Draggable key={props.todo.id} draggableId="draggable-1" index={props.index}>
-    {(provided, snapshot) => (
-  <div
+    return (
+     <Draggable key={props.todo.id} draggableId={props.index.toString()} index={props.index}>
+     {(provided, snapshot) => (
+    <div
     ref={provided.innerRef}
     {...provided.draggableProps}
     {...provided.dragHandleProps}
-    style={{ backgroundColor: provided.isDragging ? 'green' : 'lightblue' }}
-  >
+    style={snapshot.isDragging,
+        provided.draggableProps.style }
+    >
     {
-     <li key={props.todo.id} data-index={props.index} className={convertDataToClassName(props.todo)}>
-                {props.todo.text} <FunctionButtons />
-            </li>
+     <li key={props.todo.id} data-index={props.index} className={convertDataToClassName(props.todo)}>{props.todo.text} <FunctionButtons />
+    </li>
     }
   </div>
 )}

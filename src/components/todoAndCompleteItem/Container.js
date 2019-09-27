@@ -1,7 +1,6 @@
 import { connect } from 'react-redux'
 import View from './View'
-import { completeToggle } from "../../redux/actions";
-import { deleteTodo } from "../../redux/actions";
+import { setTodo } from "../../redux/actions";
 
 const mapStateToProps = state => {
     return {
@@ -18,10 +17,10 @@ const mapDispatchToProps = dispatch => {
     };
 }
 
-const FunctionButtons = connect(
+const WholeItems = connect(
     mapStateToProps,
     mapDispatchToProps
 )(View)
 
-export default FunctionButtons;
+export default WholeItems;
 

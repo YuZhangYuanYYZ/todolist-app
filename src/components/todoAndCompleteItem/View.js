@@ -37,9 +37,8 @@ class View extends React.Component {
 
             <div className="toDoListContainer">
                 <DragDropContext onDragEnd={this.onDragEnd}>
-                <CompleteItem todos={this.props.todos} />;
-                </DragDropContext>
-               
+                <CompleteItem todos={this.props.todos} />
+                </DragDropContext>            
             </div>
         );
     }
