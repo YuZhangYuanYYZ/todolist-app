@@ -6,8 +6,17 @@ export const actionTypes = {
     SHOW_ACTIVE: 'SHOW_ACTIVE',
     SHOW_COMPLETED: 'SHOW_COMPLETED',
     RECEIVE_TODOS: 'RECEIVE_TODOS',
-    SET_TODOS:'SET_TODOS'
+    SET_TODOS:'SET_TODOS',
+    SAVE_DATE:"SAVE_DATE"
 }
+
+export const saveDate = (payload) => {
+    return {
+        type: actionTypes.SAVE_DATE,
+        payload: payload,
+    }
+}
+
 export const setTodo = (payload) => {
     return {
         type: actionTypes.SET_TODOS,

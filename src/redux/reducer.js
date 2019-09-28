@@ -10,6 +10,21 @@ function reducer(originState = initialState, { type, payload }) {
                 ...originState,
                 todos: payload
             }
+
+            
+        case actionTypes.SAVE_DATE:
+                let saveDateInTodos = originState.todos.map((todo, index) => {
+                    if (todo.id === payload.id) {
+    
+                        todo.date = todo.dateValue;
+                    }
+                    return todo;
+                });
+                return {
+                    ...originState,
+                    todos: saveDateInTodos
+                };
+
         case actionTypes.SHOW_ALL:
             return {
                 ...originState,
