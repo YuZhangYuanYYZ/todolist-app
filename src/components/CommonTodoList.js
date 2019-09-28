@@ -1,13 +1,29 @@
 import React from 'react';
 import FunctionButtons from './functionButtons'
-import { Draggable , Droppable } from "react-beautiful-dnd";
-function convertDataToClassName(todo) {
-    return todo.completed ? "completed-li" : "todo-li";
-}
+import { Draggable  } from "react-beautiful-dnd";
+import DatePicker from "react-datepicker";
 
-function CommonTodoList(props) {
+import "react-datepicker/dist/react-datepicker.css";
+
+class CommonTodoList extends React.Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            startDate: new Date()
+          };
+        this.convertDataToClassName = this.convertDataToClassName.bind(this);
+    }
+     convertDataToClassName(todo) {
+        return todo.completed ? "completed-li" : "todo-li";
+    }
+    handleChange = date => {
+        this.setState({
+          startDate: date
+        });
+      };
+    render(){
     return (
-     <Draggable key={props.todo.id} draggableId={props.index.toString()} index={props.index}>
+     <Draggable key={this.props.todo.id} draggableId={this.props.index.toString()} index={this.props.index}>
      {(provided, snapshot) => (
     <div
     ref={provided.innerRef}
@@ -17,12 +33,15 @@ function CommonTodoList(props) {
         provided.draggableProps.style }
     >
     {
-     <li key={props.todo.id} data-index={props.index} className={convertDataToClassName(props.todo)}>{props.todo.text} <FunctionButtons />
+     <li key={this.props.todo.id} data-index={this.props.index} className={this.convertDataToClassName(this.props.todo)}>{this.props.todo.text} 
+      <DatePicker className="dateSelect" selected={this.state.startDate}  onChange={this.handleChange.bind(this)}
+   /><FunctionButtons />
     </li>
     }
   </div>
 )}
 </Draggable>);
+}
 }
 
 export default CommonTodoList;

@@ -227,3 +227,8 @@ button.remove {
     list-style: none;
     box-sizing: border-box
 }
+
+.dateSelect{
+    left: 500px;
+    position: relative;
+}
