@@ -40,7 +40,6 @@ class View extends React.Component {
         let dataIndex = Number(grandParent.dataset.index);
         if (!isNaN(dataIndex)) {
             const todo = this.props.todos[dataIndex];
-            console.log(todo.completed,"completed")
             const putOptions = {
                 method: 'PUT',
                 headers: {
@@ -48,7 +47,7 @@ class View extends React.Component {
                 },
                 body: JSON.stringify({
                     ...todo,
-                    completed: !todo.completed
+                   completed: this.props.todos[dataIndex].completed
                 })
             }
             this.changeTodosState(this.props.todos[dataIndex]._id, putOptions, dataIndex);

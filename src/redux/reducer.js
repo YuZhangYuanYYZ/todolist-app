@@ -14,12 +14,14 @@ function reducer(originState = initialState, { type, payload }) {
             
         case actionTypes.SAVE_DATE:
                 let saveDateInTodos = originState.todos.map((todo, index) => {
-                    if (todo.id === payload.id) {
+                    if (todo._id === payload.id) {
     
-                        todo.date = todo.dateValue;
+                        todo.date = payload.date;
                     }
                     return todo;
                 });
+                console.log(saveDateInTodos,"saveDateInTodos")
+
                 return {
                     ...originState,
                     todos: saveDateInTodos

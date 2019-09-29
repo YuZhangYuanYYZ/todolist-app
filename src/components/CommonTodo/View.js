@@ -11,7 +11,6 @@ class View extends React.Component {
        // this.saveDate = this.saveDate.bind(this);
     }
      convertDataToClassName(todo) {
-       console.log(todo._id)
         return todo.completed ? "completed-li" : "todo-li";
 
     }
@@ -19,7 +18,7 @@ class View extends React.Component {
     
     render(){
     return (
-     <Draggable key={this.props.todo.id} draggableId={this.props.index.toString()} index={this.props.index}>
+     <Draggable key={this.props.todo._id} draggableId={this.props.index.toString()} index={this.props.index}>
      {(provided, snapshot) => (
     <div
     ref={provided.innerRef}
@@ -29,8 +28,8 @@ class View extends React.Component {
         provided.draggableProps.style }
     >
     {
-     <li key={this.props.todo.id} data-index={this.props.index} className={this.convertDataToClassName(this.props.todo)}>{this.props.todo.text} 
-     <MyDueTime id={this.props.todo.id}/> <FunctionButtons />
+     <li key={this.props.todo._id} data-index={this.props.index} className={this.convertDataToClassName(this.props.todo)}>{this.props.todo.text} 
+     <MyDueTime id={this.props.todo._id} todo={this.props.todo} /> <FunctionButtons />
     </li>
     }
   </div>

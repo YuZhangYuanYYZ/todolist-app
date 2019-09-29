@@ -17,7 +17,7 @@ class View extends React.Component {
             });
     }
     addItemByEnter(e) {
-        let inputValue = this.input.value;
+        let inputValue = this.input.value
         if ((inputValue) && ((e.key === 'Enter') || (e.key === 'NumpadEnter'))) {
             this.input.value = '';
             const postOptions = {
@@ -27,7 +27,8 @@ class View extends React.Component {
                 },
                 body: JSON.stringify({
                     text: inputValue,
-                    completed: false
+                    completed: false,
+                    date:[]
                 })
             }
             this.postTodo(postOptions, inputValue);

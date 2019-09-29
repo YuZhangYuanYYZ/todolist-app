@@ -9,24 +9,40 @@ constructor(props){
     this.state = {
         startDate: new Date()
       };
-    this.handleChange = this.handleChange.bind(this);
+    this.onHandleChange = this.onHandleChange.bind(this);
+    this.changeDueDate = this.changeDueDate.bind(this);
 }
-    handleChange (date){
+  
+     onHandleChange(date){
         this.setState({
-          startDate: date
-        });
-        console.log(this.props.todo.id,"this.props.todo._id")
-        let id = this.props.todo._id
-
-        let dateValue = this.sate.startDate;
-        this.props.saveDate({id,dateValue});  
-        //id={this.props.todo._id}
-          };
+            startDate: date
+          });
+            let id = this.props.id;
+            const todo = this.props.todo;
+            const putOptions = {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    ...todo,
+                    date: date
+                })
+            }
+            this.changeDueDate(id,putOptions,date)
+        }
+            changeDueDate(id, putOptions,date) {
+                window.fetch('http://localhost:3004/todos/' + id, putOptions)
+                    .then(res => res.json())
+                    .then(json => {
+                        this.props.saveDate({id,date});
+                    });
+            }
 
     render(){    
    return (
        <div  className="dateSelect" >
-       <DatePicker selected={this.state.startDate}  onChange={this.handleChange}/>
+       <DatePicker selected={this.state.startDate}  onChange={this.onHandleChange}/>
        </div>
       )
    }}
