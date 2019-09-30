@@ -20,7 +20,7 @@ const mapStateToProps = state => {
 }
 
 const TodoItem = connect(
-    mapStateToProps
+    mapStateToProps,null
 )(View)
 
 export default TodoItem;

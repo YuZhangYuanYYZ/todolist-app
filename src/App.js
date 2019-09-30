@@ -8,19 +8,22 @@ import { receiveTodos } from './redux/actions'
 
 
 
-function App () {
+function App (props) {
+  let todos;
   useEffect(()=>{
     window.fetch('http://localhost:3004/todos ')
       .then(res => res.json())
       .then(json => {
-        store.dispatch(receiveTodos(json))
+        store.dispatch(receiveTodos(json));
+ todos = store.getState().todos;
+
       });
   })
+  console.log(todos,"todos2")
 
- 
     return (
       <div className="App" >
-        <TodoList />
+        <TodoList todos={todos}/>
       </div>
 
     );

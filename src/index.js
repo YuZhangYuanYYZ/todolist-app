@@ -14,7 +14,7 @@ ReactDOM.render(
     <Provider store={store}>      
         <Router history={history}>
         <Route exact={true}  path='/' component={Home}></Route>
-        <Route path='/todoList' component={App}></Route>
+        <Route path='/todoList' component={App }></Route>
         </Router>
     </Provider>
     , document.getElementById('root'));

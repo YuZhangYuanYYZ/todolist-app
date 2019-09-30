@@ -16,11 +16,10 @@ function reducer(originState = initialState, { type, payload }) {
                 let saveDateInTodos = originState.todos.map((todo, index) => {
                     if (todo._id === payload.id) {
     
-                        todo.date = payload.date;
+                        todo.dueTime = payload.date;
                     }
                     return todo;
                 });
-                console.log(saveDateInTodos,"saveDateInTodos")
 
                 return {
                     ...originState,

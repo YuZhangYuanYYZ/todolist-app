@@ -9,7 +9,7 @@ class View extends React.Component {
         this.addItemByEnter = this.addItemByEnter.bind(this)
 
     }
-    postTodo(postOptions, inputValue) {
+    postTodo(postOptions) {
         fetch('http://localhost:3004/todos', postOptions)
             .then(res => res.json())
             .then(json => {
@@ -26,12 +26,13 @@ class View extends React.Component {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    text: inputValue,
+                    
                     completed: false,
-                    date:[]
+                    dueTime: new Date(),
+                    text: inputValue
                 })
             }
-            this.postTodo(postOptions, inputValue);
+            this.postTodo(postOptions);
         }
     }
 
@@ -53,7 +54,7 @@ class View extends React.Component {
                     </button>
                 </header>
 
-                <div><TodoAndCompleteItem /></div>
+                <div><TodoAndCompleteItem todos={this.props.todos}/></div>
                 <div><ChooseFilter /></div>
             </div>
         )
