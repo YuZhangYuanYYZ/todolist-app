@@ -15,15 +15,14 @@ function App (props) {
       .then(res => res.json())
       .then(json => {
         store.dispatch(receiveTodos(json));
- todos = store.getState().todos;
+ //odos = store.getState().todos;
 
       });
   })
-  console.log(todos,"todos2")
 
     return (
       <div className="App" >
-        <TodoList todos={todos}/>
+        <TodoList />
       </div>
 
     );

@@ -47,7 +47,7 @@ class View extends React.Component {
                 },
                 body: JSON.stringify({
                     ...todo,
-                   completed: this.props.todos[dataIndex].completed
+                   completed: !this.props.todos[dataIndex].completed
                 })
             }
             this.changeTodosState(this.props.todos[dataIndex]._id, putOptions, dataIndex);
