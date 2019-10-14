@@ -232,3 +232,7 @@ button.remove {
     left: 500px;
     position: relative;
 }
+
+.todoAndDateSelect{
+    position: relative;
+}

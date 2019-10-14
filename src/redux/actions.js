@@ -7,7 +7,8 @@ export const actionTypes = {
     SHOW_COMPLETED: 'SHOW_COMPLETED',
     RECEIVE_TODOS: 'RECEIVE_TODOS',
     SET_TODOS:'SET_TODOS',
-    SAVE_DATE:"SAVE_DATE"
+    SAVE_DATE:"SAVE_DATE",
+    JUDGE_DOUBLE_CLICK:"JUDGE_DOUBLE_CLICK"
 }
 
 export const saveDate = (payload) => {
@@ -63,5 +64,12 @@ export const deleteTodo = (payload) => {
         payload: payload
     }
 }
+    
+export const judgeDoubleClick = (payload) => {
+        return {
+            type: actionTypes.JUDGE_DOUBLE_CLICK,
+            payload: payload
+        }
+    }
 
 export default actionTypes;

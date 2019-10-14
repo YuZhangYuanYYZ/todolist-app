@@ -1,3 +1,3 @@
-import CommonTodo from './View'
+import CommonTodo from './Container'
 
 export default CommonTodo;

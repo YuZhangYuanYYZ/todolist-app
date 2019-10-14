@@ -16,7 +16,7 @@ function View({ todos }) {
         style={{ backgroundColor: snapshot.isDragging ? 'green' : 'lightblue' }}
         >
       
-       {todos && todos.map((todo, index) => < CommonTodoList todo={todo}  index ={index} />)}
+       {todos && todos.map((todo, index) => < CommonTodoList todo={todo} todos={todos} index ={index} />)}
        
       {provided.placeholder}
 </div>

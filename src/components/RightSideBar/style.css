@@ -1,0 +1,10 @@
+.rightSideBar{
+
+    background-color: yellow;
+    top: 9px;
+    left: 80%;
+    position: absolute;
+    height: 100%;
+    width: 19%;
+    float:right;
+}
