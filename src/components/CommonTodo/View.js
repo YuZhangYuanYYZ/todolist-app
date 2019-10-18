@@ -15,8 +15,8 @@ class View extends React.Component {
         return todo.completed ? "completed-li" : "todo-li";
 
     }
-    doubleClick(){
-        this.props.judgeDoubleClick();
+    doubleClick(id){
+        this.props.judgeDoubleClick(id);
        // console.log(store.getState(),'todos')
     }
    
@@ -33,8 +33,8 @@ class View extends React.Component {
         provided.draggableProps.style }
     >
     {
-     <li key={this.props.todo._id} data-index={this.props.index} onDoubleClick={this.doubleClick} className={this.convertDataToClassName(this.props.todo)}>{this.props.todo.text} 
-     <MyDueTime id={this.props.todo._id} todo={this.props.todo} /> <FunctionButtons />
+     <li key={this.props.todo._id} data-index={this.props.index} onDoubleClick={()=>this.doubleClick(this.props.todo._id)} className={this.convertDataToClassName(this.props.todo)}>{this.props.todo.text} 
+     <MyDueTime  todo={this.props.todo} /> <FunctionButtons />
     </li>
     }
   </div>

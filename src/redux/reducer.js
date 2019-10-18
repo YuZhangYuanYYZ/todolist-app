@@ -2,7 +2,9 @@ import { actionTypes } from './actions';
 const initialState = {
     todos: [],
     filter: "SHOW_ALL",
-    showSideBar:false
+    showSideBar:false,
+    showSideBarGetTodoid:0
+
 }
 function reducer(originState = initialState, { type, payload }) {
     switch (type) {
@@ -44,20 +46,18 @@ function reducer(originState = initialState, { type, payload }) {
                 filter: "SHOW_COMPLETED"
             }
         case actionTypes.JUDGE_DOUBLE_CLICK:
-                // let todoTarget = payload;
-                // let newTodos = originState.todos.map((todo)=> {
-                //     if(todo.text === todoTarget.text){
-    
-                //         todo.showSideBar = true;
-                //     }; 
-                //     return todo;
-                // })
-                // console.log(originState.todos,newTodos,"newTodos");
                     return {
                         ...originState,
-                        showSideBar:true
+                        showSideBar:true,
+                        showSideBarGetTodoid:payload
                     };
-
+                    
+        case actionTypes.HIDE_SIDE_BAR:
+                    return {
+                                ...originState,
+                                showSideBar:false,
+                                
+                            };
         case actionTypes.SET_TODOS:
             return{
                 ...originState,

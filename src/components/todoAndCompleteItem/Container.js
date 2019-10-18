@@ -5,8 +5,10 @@ import { setTodo } from "../../redux/actions";
 const mapStateToProps = state => {
     return {
         todos: state.todos,
+        showSideBar:state.showSideBar
     }
 }
+
 
 const mapDispatchToProps = dispatch => {
     return {

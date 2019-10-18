@@ -2,10 +2,16 @@ import { connect } from 'react-redux'
 import View from './View'
 import { judgeDoubleClick } from "../../redux/actions";
 
+const mapStateToProps = state => {
+    return {
+        showSideBar:state.showSideBar
+        }
+    }
+
 const mapDispatchToProps = dispatch => {
     return {
-        judgeDoubleClick: () => {
-            dispatch(judgeDoubleClick())
+        judgeDoubleClick: (payload) => {
+            dispatch(judgeDoubleClick(payload))
         }
 
 

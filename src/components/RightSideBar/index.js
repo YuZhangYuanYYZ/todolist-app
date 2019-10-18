@@ -1,3 +1,3 @@
-import RightSideBar from './View'
+import RightSideBar from './Container'
 
 export default RightSideBar;

@@ -2,8 +2,7 @@ import React from 'react';
 import './style.css'
 import TodoAndCompleteItem from '../todoAndCompleteItem'
 import ChooseFilter from '../chooseFilter'
-import RightSideBar from '../RightSideBar';
-import store from '../../redux/store'
+
 class View extends React.Component {
     constructor(props) {
         super(props);
@@ -58,7 +57,7 @@ class View extends React.Component {
                 <div className="todoAndDateSelect"><TodoAndCompleteItem /> 
               
                 </div>
-                <div><ChooseFilter />  {store.getState().showSideBar? <RightSideBar/>:null} </div>
+                <div><ChooseFilter />  </div>
             </div>
         )
     }

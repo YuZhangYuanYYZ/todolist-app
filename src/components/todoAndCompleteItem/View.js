@@ -2,7 +2,7 @@ import React from 'react';
 import './style.css'
 import CompleteItem from '../completeItem';
 import { DragDropContext } from "react-beautiful-dnd";
-
+import RightSideBar from '../RightSideBar';
 class View extends React.Component {
     constructor(props){
         super(props);
@@ -37,7 +37,7 @@ class View extends React.Component {
                 <DragDropContext onDragEnd={this.onDragEnd}>
                 <CompleteItem  />
                 </DragDropContext>    
-                     
+                {this.props.showSideBar? <RightSideBar/>:null}     
             </div>
         );
     }

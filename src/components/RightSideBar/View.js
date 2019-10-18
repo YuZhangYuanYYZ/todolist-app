@@ -10,36 +10,46 @@ constructor(props){
     this.state = {
         startDate: new Date()
       };
-  //  this.onHandleChange = this.onHandleChange.bind(this);
-   // this.changeDueDate = this.changeDueDate.bind(this);
+   this.onHandleChange = this.onHandleChange.bind(this);
+   this.changeDueDate = this.changeDueDate.bind(this);
+   this.doneButtonOnClick = this.doneButtonOnClick.bind(this);
 }
 
-    // onHandleChange(date){
-    //     let id = this.props.id;
-    //     const todo = this.props.todos.find((todo)=>todo._id===id);
-    //     this.setState({
-    //         startDate: new Date(date)
-    //       });
+doneButtonOnClick(){
+    this.props.hideSideBar();
+}
+onHandleChange(date){
+        let id = this.props.id;
+         let upDateTodo= this.props.todos.filter((todo)=>{
+            if(todo._id===id){
+                return todo;
+            }});
+         console.log(this.props.todos,"this.props.todos")
+          upDateTodo.dueTime =   new Date(date);
+          console.log(upDateTodo,"upDateTodo111")
+        this.setState({
+            startDate: new Date(date)
+          });
             
-    //         const putOptions = {
-    //             method: 'PUT',
-    //             headers: {
-    //                 'Content-Type': 'application/json'
-    //             },
-    //             body: JSON.stringify({
-    //                 ...todo,
-    //                 dueTime: new Date(date)
-    //             })
-    //         }
-    //         this.changeDueDate(id,putOptions,new Date(date))
-    //     }
-    //         changeDueDate(id, putOptions,dueTime) {
-    //             window.fetch('http://localhost:3004/todos/' + id, putOptions)
-    //                 .then(res => res.json())
-    //                 .then(json => {
-    //                     this.props.saveDate({id,dueTime});
-    //                 });
-    //         }
+            const putOptions = {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(upDateTodo
+                    
+                )
+            }
+            this.changeDueDate(id,putOptions,this.state.startDate)
+            console.log(upDateTodo,"upDateTodo")
+        }
+            changeDueDate(id, putOptions,dueTime) {
+                window.fetch('http://localhost:3004/todos/' + id, putOptions)
+                    .then(res => res.json())
+                    .then(json => {
+                        this.props.saveDate({id,dueTime});
+                    });
+            }
     render(){    
 
    return (
@@ -47,7 +57,7 @@ constructor(props){
        <div  className="rightSideBar" >
           
        <DatePicker selected={this.state.startDate}  onChange={this.onHandleChange}/>
-       <button className="doneButton">DONE</button>
+       <button className="doneButton" onClick={this.doneButtonOnClick}>DONE</button>
        </div>
       )
    }}

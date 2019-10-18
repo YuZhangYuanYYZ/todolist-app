@@ -1,10 +1,12 @@
 import { connect } from 'react-redux'
 import View from './View'
-import { saveDate } from "../../redux/actions";
+import { saveDate ,hideSideBar} from "../../redux/actions";
 
 const mapStateToProps = state => {
     return {
         todos: state.todos,
+        id:state.showSideBarGetTodoid,
+       
     }
 }
 
@@ -12,14 +14,17 @@ const mapDispatchToProps = dispatch => {
     return {
         saveDate: payload => {
             dispatch(saveDate(payload))
+        },
+        hideSideBar:()=>{
+            dispatch(hideSideBar())
         }
     };
 }
 
-const MyDueTime = connect(
+const RightSideBar = connect(
     mapStateToProps,
     mapDispatchToProps
 )(View)
 
-export default MyDueTime;
+export default RightSideBar;
 
