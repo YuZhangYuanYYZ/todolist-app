@@ -24,9 +24,7 @@ class View extends React.Component {
                 return todo;
             }
         });
-        console.log(upDateTodo, "upDateTodo00000")
         upDateTodo.dueTime = date;
-        console.log(upDateTodo, "upDateTodo111")
         this.setState({
             startDate: new Date(date)
         });
@@ -38,24 +36,18 @@ class View extends React.Component {
             },
             body: JSON.stringify(upDateTodo)
         }
-        this.changeDueDate(id, putOptions, upDateTodo.dueTime)
+        this.changeDueDate(id, putOptions, upDateTodo.dueTime);
     }
     changeDueDate(id, putOptions, dueTime) {
         window.fetch('http://localhost:3004/todos/' + id, putOptions)
             .then(res => res.json())
             .then(json => {
-                this.props.saveDate({
-                    id,
-                    dueTime
-                });
+                this.props.saveDate(json);
             });
     }
     render() {
-
         return (
-
             <div className = "rightSideBar" >
-
             <DatePicker selected = {
                 this.state.startDate
             }   
