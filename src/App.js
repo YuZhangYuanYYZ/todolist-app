@@ -10,8 +10,12 @@ function App (props) {
   useEffect(()=>{
     window.fetch('http://localhost:3004/todos')
       .then(res => res.json())
-      .then(json => store.dispatch(receiveTodos(json))
+    
+      .then(json => {
+       return store.dispatch(receiveTodos(json));
+      }    
      );
+     
   })
 
     return (

@@ -23,7 +23,7 @@ class View extends React.Component {
     
     render(){
     return (
-     <Draggable key={this.props.todo._id} draggableId={this.props.index.toString()} index={this.props.index}>
+     <Draggable key={this.props.todo.id} draggableId={this.props.index.toString()} index={this.props.index}>
      {(provided, snapshot) => (
     <div
     ref={provided.innerRef}
@@ -33,7 +33,7 @@ class View extends React.Component {
         provided.draggableProps.style }
     >
     {
-     <li key={this.props.todo._id} data-index={this.props.index} onDoubleClick={()=>this.doubleClick(this.props.todo._id)} className={this.convertDataToClassName(this.props.todo)}>{this.props.todo.text} 
+     <li key={this.props.todo.id} data-index={this.props.index} onDoubleClick={()=>this.doubleClick(this.props.todo.id)} className={this.convertDataToClassName(this.props.todo)}>{this.props.todo.text} 
      <MyDueTime  todo={this.props.todo} /> <FunctionButtons />
     </li>
     }
