@@ -80,7 +80,7 @@ function reducer(originState = initialState, { type, payload }) {
             };
         case actionTypes.COMPLETE_TOGGLE:
             let mapResultTodos = originState.todos.map((todo, index) => {
-                if (index === payload) {
+                if (todo.id === payload.id) {
 
                     todo.completed = !todo.completed;
                 }

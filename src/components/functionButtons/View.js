@@ -24,7 +24,7 @@ class View extends React.Component {
             this.deleteTodos(this.props.todos[dataIndex].id, deleteOption, dataIndex);
         }
     }
-    changeTodosState(id, putOptions, dataIndex) {
+    changeTodosState(id, putOptions) {
         window.fetch('http://localhost:3004/todos/' + id, putOptions)
             .then(res => res.json())
             .then(json => {
@@ -37,8 +37,8 @@ class View extends React.Component {
         let dataIndex = Number(grandParent.dataset.index);
         if (!isNaN(dataIndex)) {
             const todo = this.props.todos[dataIndex];
-            let finalCompleted =todo.completed;
             this.props.onCompleteToggle(todo);
+            let finalCompleted =todo.completed;
             const putOptions = {
                 method: 'PUT',
                 headers: {
@@ -49,7 +49,7 @@ class View extends React.Component {
                    completed: finalCompleted
                 })
             }
-            this.changeTodosState(this.props.todos[dataIndex].id, putOptions, dataIndex);
+            this.changeTodosState(this.props.todos[dataIndex].id, putOptions);
 
         }
 
