@@ -45,10 +45,10 @@ function reducer(originState = initialState, { type, payload }) {
                 ...originState,
                 filter: "SHOW_COMPLETED"
             }
-        case actionTypes.JUDGE_DOUBLE_CLICK:
+        case actionTypes.SHOW_SIDEBAR_TOGLE:
                     return {
                         ...originState,
-                        showSideBar:true,
+                        showSideBar:!originState.showSideBar,
                         showSideBarGetTodoid:payload
                     };
                     

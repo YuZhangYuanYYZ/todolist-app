@@ -1,6 +1,6 @@
 
 import React from 'react';
-import DatePicker from "react-datepicker";
+import moment from "moment";
 import "react-datepicker/dist/react-datepicker.css";
 
 class View extends React.Component {
@@ -13,7 +13,7 @@ render(){
    return (
        
        <div  className="dateSelect" >
-       <input type="text" value={this.props.todo.dueTime?this.props.todo.dueTime:new Date()}/>
+       <input type="text" value={this.props.todo?((this.props.todo.dueTime)?moment(new Date(this.props.todo.dueTime)).format('YYYY-MM-DD'):new Date()):new Date()}/>
        </div>
       )
    }}

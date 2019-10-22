@@ -8,7 +8,7 @@ export const actionTypes = {
     RECEIVE_TODOS: 'RECEIVE_TODOS',
     SET_TODOS:'SET_TODOS',
     SAVE_DATE:"SAVE_DATE",
-    JUDGE_DOUBLE_CLICK:"JUDGE_DOUBLE_CLICK",
+    SHOW_SIDEBAR_TOGLE:"SHOW_SIDEBAR_TOGLE",
     HIDE_SIDE_BAR:"HIDE_SIDE_BAR"
 }
 
@@ -66,9 +66,9 @@ export const deleteTodo = (payload) => {
     }
 }
     
-export const judgeDoubleClick = (payload) => {
+export const showSideBarTogle = (payload) => {
         return {
-            type: actionTypes.JUDGE_DOUBLE_CLICK,
+            type: actionTypes.SHOW_SIDEBAR_TOGLE,
             payload: payload
         }
     }

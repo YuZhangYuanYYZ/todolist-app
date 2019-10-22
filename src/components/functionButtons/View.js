@@ -1,10 +1,8 @@
 import React from 'react';
 import './style.css'
-// import store from "../../redux/store";
 class View extends React.Component {
     constructor(props) {
         super(props);
-        // this.state = { todos: [], completes: [] };
         this.removeHandeler = this.removeHandeler.bind(this);
         this.completeHandeler = this.completeHandeler.bind(this);
     }
@@ -30,7 +28,7 @@ class View extends React.Component {
         window.fetch('http://localhost:3004/todos/' + id, putOptions)
             .then(res => res.json())
             .then(json => {
-                this.props.onCompleteToggle(dataIndex);
+                this.props.saveDate(json);
             });
     }
 
@@ -39,6 +37,8 @@ class View extends React.Component {
         let dataIndex = Number(grandParent.dataset.index);
         if (!isNaN(dataIndex)) {
             const todo = this.props.todos[dataIndex];
+            let finalCompleted =todo.completed;
+            this.props.onCompleteToggle(todo);
             const putOptions = {
                 method: 'PUT',
                 headers: {
@@ -46,7 +46,7 @@ class View extends React.Component {
                 },
                 body: JSON.stringify({
                     ...todo,
-                   completed: this.props.todos[dataIndex].completed
+                   completed: finalCompleted
                 })
             }
             this.changeTodosState(this.props.todos[dataIndex].id, putOptions, dataIndex);

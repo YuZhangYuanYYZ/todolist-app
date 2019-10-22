@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import View from './View'
-import { judgeDoubleClick } from "../../redux/actions";
+import { judgeDoubleClick ,sidbarTogle,showSideBarTogle} from "../../redux/actions";
 
 const mapStateToProps = state => {
     return {
@@ -10,15 +10,13 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        judgeDoubleClick: (payload) => {
-            dispatch(judgeDoubleClick(payload))
+        showSideBarTogle: (payload) => {
+            dispatch(showSideBarTogle(payload))
         }
-
-
     }
 }
 const CommonTodo = connect(
-    null,
+    mapStateToProps,
     mapDispatchToProps
 )(View)
 

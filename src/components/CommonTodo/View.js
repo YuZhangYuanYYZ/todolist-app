@@ -2,22 +2,19 @@ import React from 'react';
 import FunctionButtons from '../functionButtons';
 import { Draggable  } from "react-beautiful-dnd";
 import MyDueTime from '../MyDueTime';
-import store from '../../redux/store'
 
 class View extends React.Component {
     constructor(props){
         super(props);
-       
         this.convertDataToClassName = this.convertDataToClassName.bind(this);
-        this.doubleClick = this.doubleClick.bind(this);
-    }
+        this.sidbarTogle = this.sidbarTogle.bind(this);
+        }
      convertDataToClassName(todo) {
         return todo.completed ? "completed-li" : "todo-li";
 
     }
-    doubleClick(id){
-        this.props.judgeDoubleClick(id);
-       // console.log(store.getState(),'todos')
+    sidbarTogle(id){
+        this.props.showSideBarTogle(id);
     }
    
     
@@ -29,11 +26,11 @@ class View extends React.Component {
     ref={provided.innerRef}
     {...provided.draggableProps}
     {...provided.dragHandleProps}
-    style={snapshot.isDragging,
-        provided.draggableProps.style }
+   // style={snapshot.isDragging,
+      //  provided.draggableProps.style }
     >
     {
-     <li key={this.props.todo.id} data-index={this.props.index} onDoubleClick={()=>this.doubleClick(this.props.todo.id)} className={this.convertDataToClassName(this.props.todo)}>{this.props.todo.text} 
+     <li style={{"width":this.props.showSideBar?"80%":"100%"}} key={this.props.todo.id} data-index={this.props.index} onDoubleClick={()=>this.sidbarTogle(this.props.todo.id)} className={this.convertDataToClassName(this.props.todo)}>{this.props.todo.text} 
      <MyDueTime  todo={this.props.todo} /> <FunctionButtons />
     </li>
     }
