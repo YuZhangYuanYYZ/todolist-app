@@ -6,8 +6,19 @@ export const actionTypes = {
     SHOW_ACTIVE: 'SHOW_ACTIVE',
     SHOW_COMPLETED: 'SHOW_COMPLETED',
     RECEIVE_TODOS: 'RECEIVE_TODOS',
-    SET_TODOS:'SET_TODOS'
+    SET_TODOS:'SET_TODOS',
+    SAVE_DATE:"SAVE_DATE",
+    SHOW_SIDEBAR_TOGLE:"SHOW_SIDEBAR_TOGLE",
+    HIDE_SIDE_BAR:"HIDE_SIDE_BAR"
 }
+
+export const saveDate = (payload) => {
+    return {
+        type: actionTypes.SAVE_DATE,
+        payload: payload,
+    }
+}
+
 export const setTodo = (payload) => {
     return {
         type: actionTypes.SET_TODOS,
@@ -54,5 +65,19 @@ export const deleteTodo = (payload) => {
         payload: payload
     }
 }
+    
+export const showSideBarTogle = (payload) => {
+        return {
+            type: actionTypes.SHOW_SIDEBAR_TOGLE,
+            payload: payload
+        }
+    }
 
+    
+export const hideSideBar = (payload) => {
+        return {
+            type: actionTypes.HIDE_SIDE_BAR,
+            payload: payload
+        }
+    }
 export default actionTypes;

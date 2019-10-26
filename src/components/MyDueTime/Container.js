@@ -1,28 +1,25 @@
 import { connect } from 'react-redux'
 import View from './View'
-import { setTodo } from "../../redux/actions";
+import { saveDate } from "../../redux/actions";
 
 const mapStateToProps = state => {
     return {
         todos: state.todos,
-        showSideBar:state.showSideBar
     }
 }
 
-
 const mapDispatchToProps = dispatch => {
     return {
-       
-        setTodos: payload => {
-            dispatch(setTodo(payload));
+        saveDate: payload => {
+            dispatch(saveDate(payload))
         }
     };
 }
 
-const WholeItems = connect(
+const MyDueTime = connect(
     mapStateToProps,
     mapDispatchToProps
 )(View)
 
-export default WholeItems;
+export default MyDueTime;
 

@@ -3,3 +3,4 @@ export const Data = (localStorage.getItem('todoList')) ?
         todo: [],
         completed: []
     };
+

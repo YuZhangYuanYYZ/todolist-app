@@ -1,28 +1,24 @@
 import { connect } from 'react-redux'
 import View from './View'
-import { setTodo } from "../../redux/actions";
+import { judgeDoubleClick ,sidbarTogle,showSideBarTogle} from "../../redux/actions";
 
 const mapStateToProps = state => {
     return {
-        todos: state.todos,
         showSideBar:state.showSideBar
+        }
     }
-}
-
 
 const mapDispatchToProps = dispatch => {
     return {
-       
-        setTodos: payload => {
-            dispatch(setTodo(payload));
+        showSideBarTogle: (payload) => {
+            dispatch(showSideBarTogle(payload))
         }
-    };
+    }
 }
-
-const WholeItems = connect(
+const CommonTodo = connect(
     mapStateToProps,
     mapDispatchToProps
 )(View)
 
-export default WholeItems;
+export default CommonTodo;
 

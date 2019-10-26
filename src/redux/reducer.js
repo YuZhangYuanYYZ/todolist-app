@@ -1,7 +1,10 @@
 import { actionTypes } from './actions';
 const initialState = {
     todos: [],
-    filter: "SHOW_ALL"
+    filter: "SHOW_ALL",
+    showSideBar:false,
+    showSideBarGetTodoid:0
+
 }
 function reducer(originState = initialState, { type, payload }) {
     switch (type) {
@@ -10,6 +13,22 @@ function reducer(originState = initialState, { type, payload }) {
                 ...originState,
                 todos: payload
             }
+
+            
+        case actionTypes.SAVE_DATE:
+                let saveDateInTodos = originState.todos.map((todo, index) => {
+                    if (todo.id === payload.id) {
+    
+                        todo.dueTime = payload.date;
+                    }
+                    return todo;
+                });
+
+                return {
+                    ...originState,
+                    todos: saveDateInTodos
+                };
+
         case actionTypes.SHOW_ALL:
             return {
                 ...originState,
@@ -26,6 +45,19 @@ function reducer(originState = initialState, { type, payload }) {
                 ...originState,
                 filter: "SHOW_COMPLETED"
             }
+        case actionTypes.SHOW_SIDEBAR_TOGLE:
+                    return {
+                        ...originState,
+                        showSideBar:!originState.showSideBar,
+                        showSideBarGetTodoid:payload
+                    };
+                    
+        case actionTypes.HIDE_SIDE_BAR:
+                    return {
+                                ...originState,
+                                showSideBar:false,
+                                
+                            };
         case actionTypes.SET_TODOS:
             return{
                 ...originState,
@@ -48,7 +80,7 @@ function reducer(originState = initialState, { type, payload }) {
             };
         case actionTypes.COMPLETE_TOGGLE:
             let mapResultTodos = originState.todos.map((todo, index) => {
-                if (index === payload) {
+                if (todo.id === payload.id) {
 
                     todo.completed = !todo.completed;
                 }

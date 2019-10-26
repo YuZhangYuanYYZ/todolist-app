@@ -2,7 +2,7 @@ import React from 'react';
 import './style.css'
 import CompleteItem from '../completeItem';
 import { DragDropContext } from "react-beautiful-dnd";
-
+import RightSideBar from '../RightSideBar';
 class View extends React.Component {
     constructor(props){
         super(props);
@@ -15,7 +15,6 @@ class View extends React.Component {
         const result = Array.from(list);
         const [removed] = result.splice(startIndex, 1);
         result.splice(endIndex, 0, removed);
-      
         return result;
       };
     onDragEnd(result) {
@@ -34,11 +33,11 @@ class View extends React.Component {
   
     render() {
         return (
-
             <div className="toDoListContainer">
                 <DragDropContext onDragEnd={this.onDragEnd}>
-                <CompleteItem todos={this.props.todos} />
-                </DragDropContext>            
+                <CompleteItem  />
+                </DragDropContext>    
+                {this.props.showSideBar? <RightSideBar/>:null}     
             </div>
         );
     }

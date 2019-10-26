@@ -1,10 +1,8 @@
 import React from 'react';
 import './style.css'
-// import store from "../../redux/store";
 class View extends React.Component {
     constructor(props) {
         super(props);
-        // this.state = { todos: [], completes: [] };
         this.removeHandeler = this.removeHandeler.bind(this);
         this.completeHandeler = this.completeHandeler.bind(this);
     }
@@ -22,16 +20,15 @@ class View extends React.Component {
         };
         let grandParent = e.target.parentNode.parentNode;
         let dataIndex = Number(grandParent.dataset.index);
-       // console.log(this.props.todos[dataIndex]._id,"id")
         if (!isNaN(dataIndex)) {
-            this.deleteTodos(this.props.todos[dataIndex]._id, deleteOption, dataIndex);
+            this.deleteTodos(this.props.todos[dataIndex].id, deleteOption, dataIndex);
         }
     }
-    changeTodosState(id, putOptions, dataIndex) {
+    changeTodosState(id, putOptions) {
         window.fetch('http://localhost:3004/todos/' + id, putOptions)
             .then(res => res.json())
             .then(json => {
-                this.props.onCompleteToggle(dataIndex);
+                this.props.saveDate(json);
             });
     }
 
@@ -40,7 +37,8 @@ class View extends React.Component {
         let dataIndex = Number(grandParent.dataset.index);
         if (!isNaN(dataIndex)) {
             const todo = this.props.todos[dataIndex];
-            console.log(todo.completed,"completed")
+            this.props.onCompleteToggle(todo);
+            let finalCompleted =todo.completed;
             const putOptions = {
                 method: 'PUT',
                 headers: {
@@ -48,10 +46,10 @@ class View extends React.Component {
                 },
                 body: JSON.stringify({
                     ...todo,
-                    completed: !todo.completed
+                   completed: finalCompleted
                 })
             }
-            this.changeTodosState(this.props.todos[dataIndex]._id, putOptions, dataIndex);
+            this.changeTodosState(this.props.todos[dataIndex].id, putOptions);
 
         }
 
