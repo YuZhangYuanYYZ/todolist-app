@@ -1,10 +1,67 @@
 .rightSideBar{
 
-    background-color: yellow;
+    background-color: #25b99a;
+    
+    transition: 1000ms width ease;
+    
     top: 9px;
+    
     left: 80%;
+    
     position: absolute;
+    
     height: 100%;
+    
     width: 19%;
+    
     float:right;
-}
+    
+    }
+    
+    /* enter是入场前的刹那（点击按钮），appear指页面第一次加载前的一刹那（自动） */
+    
+    .animated-enter, .animated-appear {
+    
+    opacity: 0.;
+    
+    }
+    
+    .animated-enter.animated-enter-active {
+    
+    background-color: #25b99a;
+    
+    opacity: 0.8;
+    
+    transition: opacity 1500ms ease-in;
+    
+    }
+    
+    .rightSideBar.animated-leave {
+    
+    opacity: 0.5;
+    
+    }
+    
+    .rightSideBar.animated-leave.animated-leave-active {
+    
+    background-color: #5caed4;
+    
+    opacity: 0.1;
+    
+    transition: opacity 1300ms ease-in;
+    
+    }
+    
+    .animated-appear {
+    
+    opacity: 0.01;
+    
+    }
+    
+    .animated-appear.animated-appear-active {
+    
+    opacity: 1;
+    
+    transition: opacity 1s ease-in;
+    
+    }
