@@ -1,4 +1,4 @@
-import ReactCSSTransitionGroup from "react-addons-css-transition-group";
+import {CSSTransition} from "react-transition-group";
 
 import React from 'react';
 
@@ -57,22 +57,15 @@ class View extends React.Component {
 
     render() {
         return (
-            <ReactCSSTransitionGroup
-                transitionAppear={
-                    true
-                }
-                transitionAppearTimeout={
-                    500
-                }
-                transitionEnterTimeout={
-                    400
-                }
-                transitionLeaveTimeout={
-                    800
-                }
-                transitionName="animated"
-            >
-                <div key="amache" className="rightSideBar animated fadeInLeftBig" >
+            <CSSTransition
+            in={this.props.showSideBar}
+            timeout={3000}
+            classNames="animated"
+            unmountOnExit
+            onEnter
+            onExited
+          >
+                <div key="amache" className="rightSideBar  fadeInLeftBig" >
                     <DatePicker selected={
                             this.state.startDate
                         }
@@ -86,7 +79,7 @@ class View extends React.Component {
                             } > DONE 
                      </button>
                  </div>
-            </ReactCSSTransitionGroup> )
+            </CSSTransition> )
                 }
             }
             
