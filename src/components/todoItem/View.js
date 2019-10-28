@@ -1,7 +1,7 @@
 import React from 'react';
 import './style.css'
 import PropTypes from 'prop-types'
-import CommonTodoList from '../CommonTodoList'
+import CommonTodoList from '../CommonTodo/View'
 import { Draggable , Droppable } from "react-beautiful-dnd";
 
 function View({ todos }) {

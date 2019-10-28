@@ -1,11 +1,7 @@
 import {CSSTransition} from "react-transition-group";
-
 import React from 'react';
-
 import DatePicker from "react-datepicker";
-
 import './style.css'
-
 import "react-datepicker/dist/react-datepicker.css";
 
 class View extends React.Component {
@@ -59,11 +55,11 @@ class View extends React.Component {
         return (
             <CSSTransition
             in={this.props.showSideBar}
-            timeout={3000}
+            timeout={300}
             classNames="animated"
-            unmountOnExit
-            onEnter
-            onExited
+            // unmountOnExit
+            // onEnter
+            // onExited
           >
                 <div key="amache" className="rightSideBar  fadeInLeftBig" >
                     <DatePicker selected={

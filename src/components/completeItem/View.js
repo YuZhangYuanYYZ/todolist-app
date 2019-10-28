@@ -5,7 +5,6 @@ import CommonTodoList from '../CommonTodo'
 import { Droppable } from "react-beautiful-dnd";
 
 function View({todos}) {
-  console.log(todos,"the source of todos")
    return (
     // <div className = "complete"> 
     <ul className='todo'>

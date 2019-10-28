@@ -16,7 +16,6 @@ class View extends React.Component {
     sidbarTogle(id){
         this.props.showSideBarTogle(id);
     }
-   
     
     render(){
     return (

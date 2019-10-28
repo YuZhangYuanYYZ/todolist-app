@@ -37,7 +37,7 @@ class View extends React.Component {
                 <DragDropContext onDragEnd={this.onDragEnd}>
                 <CompleteItem  />
                 </DragDropContext>    
-                {this.props.showSideBar? <RightSideBar/>:null}     
+                <RightSideBar/>     
             </div>
         );
     }
