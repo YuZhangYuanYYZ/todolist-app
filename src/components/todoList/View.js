@@ -29,7 +29,8 @@ class View extends React.Component {
                     
                     completed: false,
                     dueTime: new Date(),
-                    text: inputValue
+                    text: inputValue,
+                    favorate:false
                 })
             }
             this.postTodo(postOptions);

@@ -9,7 +9,8 @@ export const actionTypes = {
     SET_TODOS:'SET_TODOS',
     SAVE_DATE:"SAVE_DATE",
     SHOW_SIDEBAR_TOGLE:"SHOW_SIDEBAR_TOGLE",
-    HIDE_SIDE_BAR:"HIDE_SIDE_BAR"
+    HIDE_SIDE_BAR:"HIDE_SIDE_BAR",
+    FAVORATE_TOGGLE:"FAVORATE_TOGGLE"
 }
 
 export const saveDate = (payload) => {
@@ -56,6 +57,12 @@ export const addTodo = (payload) => {
 export const completeToggle = (payload) => {
     return {
         type: actionTypes.COMPLETE_TOGGLE,
+        payload: payload
+    }
+};
+export const favorateToggle = (payload) => {
+    return {
+        type: actionTypes.FAVORATE_TOGGLE,
         payload: payload
     }
 };
