@@ -62,13 +62,9 @@ class View extends React.Component {
         let dataIndex = Number(grandParent.dataset.index);
       
         if (!isNaN(dataIndex)) {
-            
             const todo = this.props.todos[dataIndex];
-            
             this.props.onFavorate(todo);
-           // console.log( e.target.className,todo.favorate," e.target.className,todo.favorate")
             let finalFavorate =todo.favorate;
-            console.log(finalFavorate,"finalFavorate")
             const putOptions = {
                 method: 'PUT',
                 headers: {
