@@ -5,6 +5,7 @@ class View extends React.Component {
         super(props);
         this.removeHandeler = this.removeHandeler.bind(this);
         this.completeHandeler = this.completeHandeler.bind(this);
+        this.favorateHandler =  this.favorateHandler.bind(this);
     }
 
     deleteTodos(index, deleteOption, dataIndex) {
@@ -32,6 +33,7 @@ class View extends React.Component {
             });
     }
 
+
     completeHandeler(e) {
         let grandParent = e.target.parentNode.parentNode;
         let dataIndex = Number(grandParent.dataset.index);
@@ -54,6 +56,34 @@ class View extends React.Component {
         }
 
     }
+
+    favorateHandler(e) {
+        let grandParent = e.target.parentNode.parentNode;
+        let dataIndex = Number(grandParent.dataset.index);
+      
+        if (!isNaN(dataIndex)) {
+            
+            const todo = this.props.todos[dataIndex];
+            
+            this.props.onFavorate(todo);
+           // console.log( e.target.className,todo.favorate," e.target.className,todo.favorate")
+            let finalFavorate =todo.favorate;
+            console.log(finalFavorate,"finalFavorate")
+            const putOptions = {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    ...todo,
+                    favorate: finalFavorate
+                })
+            }
+            this.changeTodosState(this.props.todos[dataIndex].id, putOptions);
+
+        }
+
+    }
     render() {
         return (
             <div className="buttons" >
@@ -68,6 +98,15 @@ class View extends React.Component {
                     </svg>
                 </button>
                 <button className="toggleComplete" onClick={this.completeHandeler} >
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 22 22" style={{ enablebackground: "new 0 0 22 2" }} space="preserve">
+                        <rect y="0" className="noFill" width="22" height="22" />
+                        <g>
+                            <path className="fill" d="M9.7,14.4L9.7,14.4c-0.2,0-0.4-0.1-0.5-0.2l-2.7-2.7c-0.3-0.3-0.3-0.8,0-1.1s0.8-0.3,1.1,0l2.1,2.1l4.8-4.8c0.3-0.3,0.8-0.3,1.1,0s0.3,0.8,0,1.1l-5.3,5.3C10.1,14.3,9.9,14.4,9.7,14.4z" />
+                        </g>
+                    </svg>
+
+                </button>
+                <button className={this.props.todo.favorate?"favorateButtonClicked":"favorateButton"} onClick={this.favorateHandler} >
                     <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 22 22" style={{ enablebackground: "new 0 0 22 2" }} space="preserve">
                         <rect y="0" className="noFill" width="22" height="22" />
                         <g>

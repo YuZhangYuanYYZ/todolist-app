@@ -16,7 +16,6 @@ class View extends React.Component {
     sidbarTogle(id){
         this.props.showSideBarTogle(id);
     }
-   
     
     render(){
     return (
@@ -31,7 +30,7 @@ class View extends React.Component {
     >
     {
      <li style={{"width":this.props.showSideBar?"80%":"100%"}} key={this.props.todo.id} data-index={this.props.index} onDoubleClick={()=>this.sidbarTogle(this.props.todo.id)} className={this.convertDataToClassName(this.props.todo)}>{this.props.todo.text} 
-     <MyDueTime  todo={this.props.todo} /> <FunctionButtons />
+     <MyDueTime  todo={this.props.todo} /> <FunctionButtons todo={this.props.todo}/>
     </li>
     }
   </div>

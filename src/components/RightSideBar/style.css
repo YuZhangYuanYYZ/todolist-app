@@ -1,10 +1,29 @@
 .rightSideBar{
-
-    background-color: yellow;
+    background-color: #25b99a;
+    transition: 1000ms width ease;
     top: 9px;
     left: 80%;
     position: absolute;
     height: 100%;
     width: 19%;
     float:right;
-}
+    
+    }
+    .animated-exit-done{
+        display:none;
+    }
+    /* enter是入场前的刹那（点击按钮），appear指页面第一次加载前的一刹那（自动） */
+    .animated-enter {
+    opacity: 0;
+    }
+    .animated-enter-active {
+    opacity: 1;
+    transition: opacity 500ms;
+    }
+    .animated-exit {
+    opacity: 1;
+    }
+    .animated-exit-active {
+    opacity: 0;
+    transition: opacity 300ms;
+    }

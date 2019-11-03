@@ -121,7 +121,7 @@ header button SVG .fill {
 .buttons {
     position: absolute;
     top: 2px;
-    right: 30px;
+    right: 80px;
     width: 100px;
     height: 45px;
 }

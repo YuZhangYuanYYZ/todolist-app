@@ -90,8 +90,19 @@ function reducer(originState = initialState, { type, payload }) {
                 ...originState,
                 todos: mapResultTodos
             };
-
-
+            
+            case actionTypes.FAVORATE_TOGGLE:
+                let favorateResultTodos = originState.todos.map((todo, index) => {
+                    if (todo.id === payload.id) {
+    
+                        todo.favorate = !todo.favorate;
+                    }
+                    return todo;
+                });
+                return {
+                    ...originState,
+                    todos: favorateResultTodos
+                };
         default:
             return originState
     }

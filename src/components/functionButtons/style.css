@@ -10,6 +10,43 @@
     font-size: 13px;
 }
 
+.favorateButton{
+    width: 40px;
+    height: 40px;
+    background-color: #fff;
+    border: none;
+    cursor: pointer;
+    top: 4px;
+    position: absolute;
+    right: -44px;
+    font-size: 13px;
+   
+}
+.favorateButton SVG {
+    width: 22px;
+    height: 22px;
+    background-color: #fff;
+    border-radius: 11px;
+    border: 1.5px solid yellow;
+}
+.favorateButton SVG path {
+    fill: #fff;
+
+}
+.favorateButton:before {
+    content: '';
+    height: 30px;
+    width: 1px;
+
+    background-color: #c0cecb;
+    position: absolute;
+    top: 4px;
+    right: 46px;
+}
+.favorateButton SVG path {
+    fill: yellow;
+
+}
 .toggleComplete SVG {
     width: 22px;
     height: 22px;
@@ -37,5 +74,52 @@
 
 .toggleComplete SVG path {
     fill: #25b99a;
+
+}
+
+
+.favorateButtonClicked SVG {
+    background-color:red;
+
+}
+
+.favorateButtonClicked SVG path {
+    fill: white;
+}
+.favorateButtonClicked{
+    width: 40px;
+    height: 40px;
+    background-color: #fff;
+    border: none;
+    cursor: pointer;
+    top: 4px;
+    position: absolute;
+    right: -44px;
+    font-size: 13px;
+   
+}
+.favorateButton SVG {
+    width: 22px;
+    height: 22px;
+    background-color: #fff;
+    border-radius: 11px;
+    border: 1.5px solid yellow;
+}
+.favorateButtonClicked SVG path {
+    fill: red;
+
+}
+.favorateButtonClicked:before {
+    content: '';
+    height: 30px;
+    width: 1px;
+
+    background-color: #c0cecb;
+    position: absolute;
+    top: 4px;
+    right: 46px;
+}
+.favorateButtonClicked SVG path {
+    fill: yellow;
 
 }

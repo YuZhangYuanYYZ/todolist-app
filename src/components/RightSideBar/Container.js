@@ -6,7 +6,7 @@ const mapStateToProps = state => {
     return {
         todos: state.todos,
         id:state.showSideBarGetTodoid,
-       
+        showSideBar:state.showSideBar
     }
 }
 
