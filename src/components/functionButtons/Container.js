@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import View from './View'
 import { completeToggle ,favorateToggle} from "../../redux/actions";
-import { deleteTodo ,saveDate} from "../../redux/actions";
+import { deleteTodo ,saveDate,receiveTodos} from "../../redux/actions";
 
 const mapStateToProps = state => {
     return {
@@ -23,6 +23,9 @@ const mapDispatchToProps = dispatch => {
         }, 
         saveDate: payload => {
             dispatch(saveDate(payload))
+        },
+        onReceiveTodos: payload => {
+            dispatch(receiveTodos(payload))
         }
     };
 }

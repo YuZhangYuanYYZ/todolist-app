@@ -13,10 +13,9 @@ function reducer(originState = initialState, { type, payload }) {
                 ...originState,
                 todos: payload
             }
-
             
         case actionTypes.SAVE_DATE:
-                let saveDateInTodos = originState.todos.map((todo, index) => {
+                let saveDateInTodos = originState.todos.map((todo) => {
                     if (todo.id === payload.id) {
     
                         todo.dueTime = payload.date;
@@ -92,7 +91,7 @@ function reducer(originState = initialState, { type, payload }) {
             };
             
             case actionTypes.FAVORATE_TOGGLE:
-                let favorateResultTodos = originState.todos.map((todo, index) => {
+                let favorateResultTodos = originState.todos.map((todo) => {
                     if (todo.id === payload.id) {
     
                         todo.favorate = !todo.favorate;

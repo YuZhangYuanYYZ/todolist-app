@@ -6,6 +6,8 @@ class View extends React.Component {
         this.removeHandeler = this.removeHandeler.bind(this);
         this.completeHandeler = this.completeHandeler.bind(this);
         this.favorateHandler =  this.favorateHandler.bind(this);
+        this.changeTodoFavorate =  this.changeTodoFavorate.bind(this);
+        
     }
 
     deleteTodos(index, deleteOption, dataIndex) {
@@ -33,6 +35,15 @@ class View extends React.Component {
             });
     }
 
+    changeTodoFavorate(id, putOptions) {
+        window.fetch('http://localhost:3004/todos/' + id, putOptions)
+            .then(res => res.json())
+            .then(json => {
+                this.props.saveDate(json);
+            });
+    }
+    
+
 
     completeHandeler(e) {
         let grandParent = e.target.parentNode.parentNode;
@@ -58,13 +69,14 @@ class View extends React.Component {
     }
 
     favorateHandler(e) {
-        let grandParent = e.target.parentNode.parentNode;
+        let grandParent = e.target.parentNode.parentNode.parentNode;
         let dataIndex = Number(grandParent.dataset.index);
-      
+        console.log(dataIndex,e.target,"target")
         if (!isNaN(dataIndex)) {
             const todo = this.props.todos[dataIndex];
             this.props.onFavorate(todo);
             let finalFavorate =todo.favorate;
+            console.log(finalFavorate,"finalFavorate")
             const putOptions = {
                 method: 'PUT',
                 headers: {
@@ -75,7 +87,7 @@ class View extends React.Component {
                     favorate: finalFavorate
                 })
             }
-            this.changeTodosState(this.props.todos[dataIndex].id, putOptions);
+            this.changeTodoFavorate(this.props.todos[dataIndex].id, putOptions);
 
         }
 
