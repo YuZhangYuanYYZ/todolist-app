@@ -33,7 +33,7 @@ class View extends React.Component {
   
     render() {
         return (
-            <div className="toDoListContainer">
+            <div className={this.props.showSideBar?"toDoListContainerWithShortWidth":"toDoListContainer"}>
                 <DragDropContext onDragEnd={this.onDragEnd}>
                 <CompleteItem  />
                 </DragDropContext>    
@@ -45,4 +45,6 @@ class View extends React.Component {
 
 
 export default View;
+
+
 
