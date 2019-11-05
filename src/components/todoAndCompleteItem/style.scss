@@ -1,0 +1,10 @@
+
+.list-container {
+    transition: width 2000ms ease;
+   &.short{
+        width: 80%;
+   } 
+   .long{
+        width: 100%;
+   }
+}

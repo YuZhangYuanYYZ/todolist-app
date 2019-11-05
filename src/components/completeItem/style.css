@@ -1,3 +1,7 @@
+.todo {
+    background-color: lightblue;
+    padding: 10px;
+}
 .completed-li .toggleComplete SVG {
     background-color: #25b99a;
 

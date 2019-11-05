@@ -88,16 +88,6 @@ header button SVG .fill {
     top: 10px;
 }
 
-.toDoListContainerWithShortWidth{
-    width: 80%;
-    padding: 0 20px 0 0;
-    margin-left: 10px;
-}
-.toDoListContainerWithShortWidth ul {
-    position: relative;
-    width: 100%;
-    top: 10px;
-}
 
 .todo {
     width: 100%;

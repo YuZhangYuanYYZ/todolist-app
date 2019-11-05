@@ -1,7 +1,7 @@
 import {CSSTransition} from "react-transition-group";
 import React from 'react';
 import DatePicker from "react-datepicker";
-import './style.css'
+import './style.scss'
 import "react-datepicker/dist/react-datepicker.css";
 
 class View extends React.Component {
@@ -52,12 +52,13 @@ class View extends React.Component {
     }
 
     render() {
+        const visibility = this.props.showSideBar? "show": "hidden"
         return (
-            <CSSTransition
+         <CSSTransition
             in={this.props.showSideBar}
             timeout={300}
             classNames="animated">
-                <div key="amache" className="rightSideBar  fadeInLeftBig" >
+                <div key="amache" className={`rightSideBar  fadeInLeftBig ${visibility}`} >
                     <DatePicker selected={
                             this.state.startDate
                         }

@@ -1,5 +1,5 @@
 import React from 'react';
-import './style.css'
+import './style.scss'
 import CompleteItem from '../completeItem';
 import { DragDropContext } from "react-beautiful-dnd";
 import RightSideBar from '../RightSideBar';
@@ -33,9 +33,9 @@ class View extends React.Component {
   
     render() {
         return (
-            <div className={this.props.showSideBar?"toDoListContainerWithShortWidth":"toDoListContainer"}>
+            <div className={this.props.showSideBar?"list-container short":"list-container long"}>
                 <DragDropContext onDragEnd={this.onDragEnd}>
-                <CompleteItem  />
+                  <CompleteItem  />
                 </DragDropContext>    
                 <RightSideBar/>     
             </div>
