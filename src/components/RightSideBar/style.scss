@@ -7,18 +7,21 @@
     height: 100%;
     width: 19%;
     float:right;
-    
+    &.show{
+        display: block;
     }
-.animated-exit-done{
-    display:none;
+    &.hidden{
+        display: none;
+    }
 }
+
 /* enter是入场前的刹那（点击按钮），appear指页面第一次加载前的一刹那（自动） */
 .animated-enter {
     opacity: 0;
 }
 .animated-enter-active {
     opacity: 1;
-    transition: opacity 500ms;
+    transition: opacity 2000ms;
 }
 .animated-exit {
     opacity: 1;
