@@ -4,10 +4,6 @@ import moment from "moment";
 import "react-datepicker/dist/react-datepicker.css";
 
 class View extends React.Component {
-constructor(props){
-    super(props);
-
-}
 render(){    
 
    return (

@@ -58,22 +58,11 @@ header input::-webkit-input-placeholder {
 }
 
 
-.noFill {
-    fill: none;
-}
-
-header button SVG {
+.add-icon {
     width: 16px;
     height: 16px;
     position: absolute;
     margin: -8px 0 0 -8px;
-}
-
-
-
-header button SVG .fill {
-    fill: #25b99a;
-
 }
 
 .toDoListContainer {
