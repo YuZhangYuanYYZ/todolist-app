@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import View from './View'
-import { judgeDoubleClick ,sidbarTogle,showSideBarTogle} from "../../redux/actions";
+import { showSideBarTogle} from "../../redux/actions";
 
 const mapStateToProps = state => {
     return {
