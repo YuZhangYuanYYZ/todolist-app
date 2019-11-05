@@ -6,7 +6,6 @@ import { Droppable } from "react-beautiful-dnd";
 
 function View({todos}) {
    return (
-    // <div className = "complete"> 
     <ul className='todo'>
     <Droppable droppableId="droppable">
     {(provided, snapshot) => (
