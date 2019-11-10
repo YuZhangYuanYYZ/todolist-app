@@ -1,6 +1,9 @@
-import { actionTypes } from './actions';
+import { actionTypes } from './actions/actions';
+import { todoActionTypes } from './actions';
+
 const initialState = {
     todos: [],
+    isFetchingTodos: true,
     filter: "SHOW_ALL",
     showSideBar:false,
     showSideBarGetTodoid:0
@@ -8,12 +11,19 @@ const initialState = {
 }
 function reducer(originState = initialState, { type, payload }) {
     switch (type) {
-        case actionTypes.RECEIVE_TODOS:
+        case todoActionTypes.REQUEST_TODOS:
+        return {
+            ...originState,
+            isFetchingTodos: true,
+            todos: payload
+        };
+
+        case todoActionTypes.RECEIVE_TODOS:
             return {
                 ...originState,
+                isFetchingTodos: false,
                 todos: payload
-            }
-
+        }
             
         case actionTypes.SAVE_DATE:
                 let saveDateInTodos = originState.todos.map((todo, index) => {
@@ -58,13 +68,13 @@ function reducer(originState = initialState, { type, payload }) {
                                 showSideBar:false,
                                 
                             };
-        case actionTypes.SET_TODOS:
+        case todoActionTypes.SET_TODOS:
             return{
                 ...originState,
                 todos:payload
             }
 
-        case actionTypes.ADD_TODO:
+        case todoActionTypes.ADD_TODO:
             return {
                 ...originState,
                 todos: [
@@ -72,7 +82,7 @@ function reducer(originState = initialState, { type, payload }) {
                     payload
                 ]
             };
-        case actionTypes.DELETE_ITEM:
+        case todoActionTypes.DELETE_ITEM:
             let resultTodos = originState.todos.filter((todo, index) => index !== payload);
             return {
                 ...originState,
