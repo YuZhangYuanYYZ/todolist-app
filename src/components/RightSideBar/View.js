@@ -55,9 +55,9 @@ class View extends React.Component {
         return (
             <CSSTransition
             in={this.props.showSideBar}
-            timeout={300}
+            timeout={1500}
             classNames="animated">
-                <div key="amache" className="rightSideBar  fadeInLeftBig" >
+                <div key="amache" className={this.props.showSideBar?"rightSideBarShow":"rightSideBarHide"} >
                     <DatePicker selected={
                             this.state.startDate
                         }
