@@ -1,11 +1,12 @@
 import { connect } from 'react-redux'
 import View from './View'
-import { setTodo } from "../../redux/actions";
+import { setTodo } from "../../redux/actions/";
 
 const mapStateToProps = state => {
     return {
         todos: state.todos,
-        showSideBar:state.showSideBar
+        isFetchingTodos: state.isFetchingTodos,
+        showSideBar:state.showSideBar,
     }
 }
 

@@ -32,6 +32,9 @@ class View extends React.Component {
     }
   
     render() {
+        if(this.props.isFetchingTodos) {
+          return <div className="loading-indicator">Loading......</div>;
+        } 
         return (
             <div className={this.props.showSideBar?"list-container short":"list-container long"}>
                 <DragDropContext onDragEnd={this.onDragEnd}>
