@@ -69,16 +69,16 @@ export function fetchTodos() {
 
 
 
-export function deleteOneTodo(dataIndex, deleteOption) {
+export function deleteOneTodo(id,dataIndex, deleteOption) {
     return function (dispatch) {
         dispatch(requestDeleteTodo(dataIndex));
-        return fetch(`http://localhost:3004/todos`)
+        console.log(dataIndex,"dataIndex")
+        return fetch(`http://localhost:3004/todos/`+id,deleteOption)
             .then(
                 response => response.json(),
                 error => console.log('An error occurred when delete a todo', error)
             )
-            .then(json =>
-                dispatch(deleteItem(dataIndex))
+            .then(json =>dispatch(deleteItem(dataIndex))
             )
         }
 }

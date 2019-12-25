@@ -16,8 +16,10 @@ class View extends React.Component {
         };
         let grandParent = e.target.parentNode.parentNode;
         let dataIndex = Number(grandParent.dataset.index);
+        console.log(this.props.todos,"this.props.todos")
+        console.log(this.props.todos[dataIndex],"this.props.todo[dataIndex]")
         if (!isNaN(dataIndex)) {
-            store.dispatch(deleteOneTodo(dataIndex, deleteOption));
+            store.dispatch(deleteOneTodo(this.props.todos[dataIndex].id, dataIndex,deleteOption));
         }
     }
     changeTodosState(id, putOptions) {
@@ -79,7 +81,7 @@ class View extends React.Component {
         return (
             <div className="buttons" >
                 <button className={this.props.todo.isDeleting?"Deleting":"remove"} onClick={this.removeHandeler} >
-                {this.props.todo.isDeleting?<div ClassName = "DeletingWord">DELETING</div> :<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                {this.props.todo.isDeleting?<div className = "DeletingWord">DELETING</div> :<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                         viewBox="0 0 22 22" style={{ enablebackground: "new 0 0 22 22" }} space="preserve">
                         <rect className="noFill" width="22" height="22" /><g><g>
                             <path className="fill" d="M16.1,3.6h-1.9V3.3c0-1.3-1-2.3-2.3-2.3h-1.7C8.9,1,7.8,2,7.8,3.3v0.2H5.9c-1.3,0-2.3,1-2.3,2.3v1.3c0,0.5,0.4,0.9,0.9,1v10.5c0,1.3,1,2.3,2.3,2.3h8.5c1.3,0,2.3-1,2.3-2.3V8.2c0.5-0.1,0.9-0.5,0.9-1V5.9C18.4,4.6,17.4,3.6,16.1,3.6z M9.1,3.3c0-0.6,0.5-1.1,1.1-1.1h1.7c0.6,0,1.1,0.5,1.1,1.1v0.2H9.1V3.3z M16.3,18.7c0,0.6-0.5,1.1-1.1,1.1H6.7c-0.6,0-1.1-0.5-1.1-1.1V8.2h10.6V18.7z M17.2,7H4.8V5.9c0-0.6,0.5-1.1,1.1-1.1h10.2c0.6,0,1.1,0.5,1.1,1.1V7z" /></g><g><g>
