@@ -4,9 +4,9 @@ import { todoActionTypes } from './actions';
 const initialState = {
     todos: [],
     isFetchingTodos: true,
+    isLoadingItem:false,
     filter: "SHOW_ALL",
     showSideBar:false,
-    showSideBarGetTodoid:0
 
 }
 function reducer(originState = initialState, { type, payload }) {
@@ -17,7 +17,28 @@ function reducer(originState = initialState, { type, payload }) {
             isFetchingTodos: true,
             todos: payload
         };
+        
+        case todoActionTypes.REQUEST_DELETE_TODO:
+            let requestDeleteTodoResults = originState.todos.map((todo, index) => {
+                if (index === payload) {
+                    todo.isDeleting = true;
+                }
+                else{
+                    todo.isDeleting = false;
+                }
+                return todo;
+            });
+            return {
+                ...originState,
+                todos: requestDeleteTodoResults
+            };
 
+        case todoActionTypes.ADD_ITEM_LOAD:
+                return {
+                    ...originState,
+                    isLoadingItem: true,
+                    todos: payload
+                };
         case todoActionTypes.RECEIVE_TODOS:
             return {
                 ...originState,
@@ -83,10 +104,10 @@ function reducer(originState = initialState, { type, payload }) {
                 ]
             };
         case todoActionTypes.DELETE_ITEM:
-            let resultTodos = originState.todos.filter((todo, index) => index !== payload);
+            let deleteItemresults = originState.todos.filter((todo, index) => index !== payload);
             return {
                 ...originState,
-                todos: resultTodos
+                todos: deleteItemresults
             };
         case actionTypes.COMPLETE_TOGGLE:
             let mapResultTodos = originState.todos.map((todo, index) => {

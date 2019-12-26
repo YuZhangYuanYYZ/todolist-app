@@ -131,8 +131,19 @@ button.remove {
     position: absolute;
     right: 70px;
     font-size: 13px;
-
 }
+button.Deleting {
+    width: 40px;
+    height: 40px;
+    background-color: #fff;
+    border: none;
+    cursor: pointer;
+    top: 4px;
+    position: absolute;
+    right: 70px;
+    font-size: 13px;
+}
+
 
 .remove SVG {
     width: 22px;
