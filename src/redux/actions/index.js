@@ -1,5 +1,5 @@
 export { todoActionTypes, fetchTodos, 
-    setTodo, addTodo, deleteTodo,
+    setTodo, addTodo,deleteOneTodo
 } from './todoActions'
 export {actionTypes, saveDate, showAll, showActive,
     showCompleted, completeToggle, favorateToggle,
